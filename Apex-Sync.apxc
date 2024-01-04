@@ -1,0 +1,53 @@
+public class StudentNames {
+		public static List<Student__c> sudentsOfClass(String classId) {
+        
+        List<Student__c> studentsInClass = [SELECT Name FROM Student__c WHERE Class__r.Name = :classId];
+            For(Student__c stu : studentsInClass){
+                System.debug(stu.Name);
+            }
+        return studentsInClass;
+    }
+    	
+     public static Map<Id, Set<Id>> mapOfStudent() {
+        Map<Id, Set<Id>> classStudentMap = new Map<Id, Set<Id>>();
+
+        List<Student__c> students = [SELECT Id, Class__c FROM Student__c];
+
+        for (Student__c student : students) {
+            Id classId = student.Class__c;
+            Id studentId = student.Id;
+
+            if (!classStudentMap.containsKey(classId)) {
+                classStudentMap.put(classId, new Set<Id>());
+            }
+            classStudentMap.get(classId).add(studentId);
+        }
+		
+        return classStudentMap;
+    }
+     public static Integer getWorkingDays(Date startDate, Date endDate) {
+        Integer workingDays = 0;
+        Integer fullWeeks = (endDate.daysBetween(startDate)) / 7;
+        Integer remainingDays = Math.mod(endDate.daysBetween(startDate), 7);
+         for(Integer i = 0; i<remainingDays; i++){
+             Date tempStartDate = startDate+i;
+             DateTime check = (DateTime)tempStartDate;
+             
+             if(check.format('E') != 'Sun' && check.format('E') != 'Sat' ){
+                 workingDays++;
+             }
+         }
+         workingDays+=(fullWeeks*5);
+        return workingDays;
+    }
+    public static List<String> getListOfSObjects() {
+        List<String> sObjectNames = new List<String>();
+
+        Map<String, Schema.SObjectType> gd = Schema.getGlobalDescribe();
+        for (String name : gd.keySet()) {
+            sObjectNames.add(name);
+        }
+
+        return sObjectNames;
+    }
+}
