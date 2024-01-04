@@ -1,0 +1,32 @@
+public class MailSchedular implements Schedulable{
+    public void execute(SchedulableContext ctx){
+        Date beforeThirtyDays = Date.today().addDays(-30);
+        List<Opportunity> opptys = [Select Id, Name, AccountId, lastModifiedDate 
+                                   FROM Opportunity
+                                   WHERE LastModifiedDate < :beforeThirtyDays];
+        
+        List<Messaging.SingleEmailMessage> mailsToSend = new List<Messaging.SingleEmailMessage>();
+        
+        for(Opportunity opp : opptys) {
+            Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+            List<String> s = new List<String>();
+            List<Contact> cont = [Select Email From Contact Where AccountId = :opp.AccountId];
+            for(Contact con : cont){
+                if(con.Email != null){
+                     s.add(con.Email);
+                }
+            }
+            mail.setToAddresses(new List<String>(s));
+            mail.setSubject('Opportunity Not Modified Reminder');
+            mail.setPlainTextBody('Dear ' + opp.Owner.Name + ',\n\n'
+                                + 'This is a reminder that the opportunity with ID: ' + opp.Id 
+                                + ' has not been modified for the last 30 days.');
+
+            mailsToSend.add(mail);
+        }
+
+        if (!mailsToSend.isEmpty()) {
+            Messaging.sendEmail(mailsToSend);
+        }
+    }
+}
