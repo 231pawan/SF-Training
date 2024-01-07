@@ -1,11 +1,14 @@
 public class StudentNames {
-		public static List<Student__c> sudentsOfClass(String classId) {
+		public static List<String> sudentsOfClass(String classId) {
         
-        List<Student__c> studentsInClass = [SELECT Name FROM Student__c WHERE Class__r.Name = :classId];
-            For(Student__c stu : studentsInClass){
-                System.debug(stu.Name);
-            }
-        return studentsInClass;
+         List<Student__c> studentList = [select name from student__c where class__r.id = :classId ];
+        List<String> stuList = new List<String>();
+        for(Student__c s : studentList){
+            System.debug('name : '+s.name);
+            stuList.add(s.name);
+        }   
+        return stuList;
+
     }
     	
      public static Map<Id, Set<Id>> mapOfStudent() {
@@ -41,13 +44,12 @@ public class StudentNames {
         return workingDays;
     }
     public static List<String> getListOfSObjects() {
-        List<String> sObjectNames = new List<String>();
-
+        public static List<Schema.SObjectType> getAllSObjects(){
+        List<Schema.SObjectType> allSObjects = new List<Schema.SObjectType>();
         Map<String, Schema.SObjectType> gd = Schema.getGlobalDescribe();
-        for (String name : gd.keySet()) {
-            sObjectNames.add(name);
-        }
-
-        return sObjectNames;
+        for(Schema.SObjectType thisObj : gd.values()) {
+    		allSObjects.add(thisObj);
+		}
+        return allSObjects;
     }
 }
