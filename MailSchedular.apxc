@@ -1,32 +1,20 @@
-public class MailSchedular implements Schedulable{
+public class MailShedular implements Schedulable{
     public void execute(SchedulableContext ctx){
         Date beforeThirtyDays = Date.today().addDays(-30);
-        List<Opportunity> opptys = [Select Id, Name, AccountId, lastModifiedDate 
-                                   FROM Opportunity
-                                   WHERE LastModifiedDate < :beforeThirtyDays];
+        List<Opportunity> opptys = [SELECT  Owner.Email FROM Opportunity
+                                   WHERE lastModifiedDate < :beforeThirtyDays and Owner.Email != null];
         
-        List<Messaging.SingleEmailMessage> mailsToSend = new List<Messaging.SingleEmailMessage>();
         
-        for(Opportunity opp : opptys) {
-            Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-            List<String> s = new List<String>();
-            List<Contact> cont = [Select Email From Contact Where AccountId = :opp.AccountId];
-            for(Contact con : cont){
-                if(con.Email != null){
-                     s.add(con.Email);
-                }
-            }
-            mail.setToAddresses(new List<String>(s));
-            mail.setSubject('Opportunity Not Modified Reminder');
-            mail.setPlainTextBody('Dear ' + opp.Owner.Name + ',\n\n'
-                                + 'This is a reminder that the opportunity with ID: ' + opp.Id 
-                                + ' has not been modified for the last 30 days.');
-
-            mailsToSend.add(mail);
+        Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+        mail.setSenderDisplayName('SalesForce');
+        mail.setSubject('Update Opportunity');
+        mail.setPlainTextBody('Opportunity has not been update from last 30 days');
+        List<string> Toaddress = new List<string>();
+        for(Opportunity o:opptys)
+        {
+            Toaddress.add(o.Owner.Email);
         }
-
-        if (!mailsToSend.isEmpty()) {
-            Messaging.sendEmail(mailsToSend);
-        }
+          mail.setToAddresses(Toaddress);
+         Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail }); 
     }
 }
