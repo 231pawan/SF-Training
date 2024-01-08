@@ -1,5 +1,5 @@
 public class StudentNames {
-		public static List<String> studentsOfClass(String classId) {
+		public static List<String> studentsOfClass(Id classId) {
       List<Student__c> studentList = new List<Student__c>();
         studentList = [select name from student__c where class__r.id = :classId ];
         List<String> stuList = new List<String>();
