@@ -1,0 +1,20 @@
+public class MailShedular implements Schedulable{
+    public void execute(SchedulableContext ctx){
+        Date beforeThirtyDays = Date.today().addDays(-30);
+        List<Opportunity> opptys = [SELECT  Owner.Email FROM Opportunity
+                                   WHERE lastModifiedDate < :beforeThirtyDays and Owner.Email != null];
+        
+        
+        Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+        mail.setSenderDisplayName('SalesForce');
+        mail.setSubject('Update Opportunity');
+        mail.setPlainTextBody('Opportunity has not been update from last 30 days');
+        List<string> Toaddress = new List<string>();
+        for(Opportunity o:opptys)
+        {
+            Toaddress.add(o.Owner.Email);
+        }
+          mail.setToAddresses(Toaddress);
+         Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail }); 
+    }
+}
