@@ -1,8 +1,8 @@
 public class MailSchedular implements Schedulable{
     public void execute(SchedulableContext ctx){
-        Date beforeThirtyDays = Date.today().addDays(-30);
+        
         List<Opportunity> opptys = [SELECT  Owner.Email FROM Opportunity
-                                   WHERE lastModifiedDate < :beforeThirtyDays and Owner.Email != null];
+                                   WHERE lastModifiedDate = LAST_N_DAYS:30 and Owner.Email != null];
         
         
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
@@ -18,3 +18,6 @@ public class MailSchedular implements Schedulable{
          Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail }); 
     }
 }
+MailSchedular schedular = new MailSchedular();
+String sch = '0 0 0 1 * ?';
+String jobID = System.schedule('Remind Opp Owener', sch, schedular);
