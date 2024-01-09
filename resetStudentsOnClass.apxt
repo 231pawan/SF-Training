@@ -4,7 +4,7 @@ trigger resetStudentsOnClass on Class__c (after update) {
             if(c.Custom__c == 'Reset'){
                 List<Class__c> query=[select name,(SELECT name FROM students__r) from class__c WHERE id =: c.Id ];
     			for(Class__c del:query){
-        			delete del.students__c;
+        			delete del.students__r;
                 }
     		}
     }
