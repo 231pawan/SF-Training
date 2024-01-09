@@ -38,14 +38,14 @@ public class StudentNames {
         }
         return workingDays;
     }
-    public static List<Schema.SObjectType> getAllSObjects(){
-        List<Schema.SObjectType> allSObjects = new List<Schema.SObjectType>();
-        Map<String, Schema.SObjectType> gd = Schema.getGlobalDescribe();
+    public static List<String> getAllSObjectNames() {
+    List<String> allSObjectNames = new List<String>();
+    Map<String, Schema.SObjectType> gd = Schema.getGlobalDescribe();
 
-		for(Schema.SObjectType thisObj : gd.values()) {
-    		allSObjects.add(thisObj);
-		}
-        return allSObjects;
-    } 
+    for (String sObjectName : gd.keySet()) {
+        allSObjectNames.add(sObjectName);
+    }
+    return allSObjectNames;
+}
 
 }
