@@ -1,4 +1,11 @@
-public class AccountContactID {
+public class AccountContactID implements Queueable{
+        Id contactId;
+        public AccountContactID(Id contactId){
+            this.contactId = contactId;
+        }
+        public void execute(QueueableContext context) {
+                	addAccountId(contactId);
+                }
 		public static void addAccountId(Id contactId){
          
    List<Contact> ContactList = [select id, AccountId, Account.ContactIDs__c from contact where id =: contactId];
