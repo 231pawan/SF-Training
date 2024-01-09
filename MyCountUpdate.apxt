@@ -1,0 +1,7 @@
+trigger MyCountUpdate on Class__c (before insert, before update) {
+		  if(trigger.isUpdate || trigger.isInsert){
+       for(class__c c:trigger.new){
+        	c.MyCount__c = c.NumberOfStudents__c;
+    	}
+    }
+}	
