@@ -4,14 +4,13 @@ public class StudentNames {
         studentList = [select name from student__c where class__r.id = :classId ];
         List<String> stuList = new List<String>();
         for(Student__c s : studentList){
-            System.debug('name : '+s.name);
             stuList.add(s.name);
         }   
         return stuList;
 
     }
     	
-     public static Map<String, Set<Id>> mapOfStudent() {
+     public static Map<String, Set<Id>> getClassNamesWithStudentIds() {
         Map<String, Set<Id>> classStudentMap = new Map<String, Set<Id>>();
 
         List<Student__c> students = [SELECT Id, Class__r.Name FROM Student__c];
@@ -23,25 +22,20 @@ public class StudentNames {
                 classStudentMap.put(className, new Set<Id>());
             }
             classStudentMap.get(className).add(studentId);
-            System.debug(className);
 			
         }
-		System.debug(classStudentMap);
         return classStudentMap;
     }
      public static Integer getWorkingDays(Date startDate, Date endDate) {
-        Integer workingDays = 0;
-        Integer fullWeeks = (endDate.daysBetween(startDate)) / 7;
-        Integer remainingDays = Math.mod(endDate.daysBetween(startDate), 7);
-         for(Integer i = 0; i<remainingDays; i++){
-             Date tempStartDate = startDate+i;
-             DateTime check = (DateTime)tempStartDate;
-             
-             if(check.format('E') != 'Sun' && check.format('E') != 'Sat' ){
-                 workingDays++;
-             }
-         }
-         workingDays+=(fullWeeks*5);
+       Integer workingDays = 0;
+        DateTime sdt1 = (DateTime)startDate;
+        Datetime sdt2 = (DateTime)endDate;
+        while(sdt1<sdt2){
+            if(sdt1.format('E')!='sun' && sdt1.format('E')!='sat'){
+                workingDays++;
+            }
+           sdt1=sdt1.addDays(1);
+        }
         return workingDays;
     }
     public static List<Schema.SObjectType> getAllSObjects(){
