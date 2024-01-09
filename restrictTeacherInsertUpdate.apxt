@@ -1,0 +1,11 @@
+trigger restrictTeacherInsertUpdate on Contact (before insert, before update) {
+    if(trigger.isBefore && (trigger.isUpdate || trigger.isInsert)){
+        List<Teach__c> teach = [SELECT Subject__c from Teach__c WHERE Contact__r.Id IN :Trigger.New];
+        for(Teach__c hindiSub :teach){	
+            if(hindiSub.Subject__c.contains('Hindi')){
+                hindiSub.addError('You can not update or insert records');
+            }
+        }
+    }
+			
+}
