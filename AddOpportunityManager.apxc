@@ -1,5 +1,12 @@
-public class AddOpportunityManager {
-       
+public class AddOpportunityManager implements Queueable{
+    	
+           private List<Opportunity> oppList;
+    public AddOpportunityManager(List<Opportunity> oppList){
+        		this.oppList = oppList;
+    }
+    		    public void execute(QueueableContext context) {
+                	addManager(oppList);
+                }
     public static void addManager(List<Opportunity> oppList){
         
         
@@ -18,4 +25,3 @@ public class AddOpportunityManager {
         }
     }
 }
-
