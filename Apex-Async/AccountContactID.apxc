@@ -29,7 +29,7 @@ public class AccountContactID implements Queueable{
          }
          updatedAccounts.add(c.Account);
        }
-         update.updatedAccounts;
+         update updatedAccounts;
    }
 
 }
