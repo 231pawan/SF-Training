@@ -1,26 +1,28 @@
 public class AddOpportunityManager implements Queueable{
     	
-           private List<Opportunity> oppList;
-    public AddOpportunityManager(List<Opportunity> oppList){
-        		this.oppList = oppList;
+           public List<Opportunity> oppLis;
+    public AddOpportunityManager(List<Opportunity> opplist){
+        		oppLis = opplist;
     }
     		    public void execute(QueueableContext context) {
-                	addManager(oppList);
+                	addManager(oppLis);
                 }
-    public static void addManager(List<Opportunity> oppList){
+    public static void addManager(List<Opportunity> oppLis){
         
         
-        List<id> contactIds = new List<id>();
-        for(opportunity o : oppList){
-            contactIds.add(o.BillToContact__c);
+        List<id> c = new List<id>();
+        
+        for(opportunity o : oppLis){
+            c.add(o.BillToContact__c);
         }
         
-        Map<id, contact> idContMap = new Map<id, contact>([SELECT id, AccountId from contact where id in: contactIds]); 
+        Map<id, contact> idContMap = new Map<id, contact>([SELECT id, AccountId from contact where id in: c]); 
         
-        for(Opportunity o : oppList){
+        for(Opportunity o : oppLis){
             if(o.BillToContact__c != null && o.Manager__c == null){
                     o.Manager__c = idContMap.get(o.BillToContact__c).AccountId;
             }
         }
+        update oppLis;
     }
 }
