@@ -1,0 +1,16 @@
+trigger OpportunityAccountManager on Opportunity (before insert, before update) {
+    if(trigger.isBefore && (trigger.isInsert || trigger.isUpdate)){
+                List<id> contactIds = new List<id>();
+        for(Opportunity oppty: trigger.New){
+            contactIds.add(oppty.BillToContact__c);
+        }
+        Map<id, contact> idContMap = new Map<id, contact>([SELECT id, AccountId from contact WHERE id IN: contactIds]); 
+        
+        for(Opportunity o : trigger.New){
+            if(o.BillToContact__c != null && o.Manager__c == null){
+                System.debug('Hello');
+                    o.Manager__c = idContMap.get(o.BillToContact__c).AccountId;
+            }
+        }
+    }
+}	
