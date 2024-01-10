@@ -11,6 +11,7 @@ public class AccountContactID implements Queueable{
    List<Contact> ContactList = [select id, AccountId, Account.ContactIDs__c from contact where id =: contactId];
         Id accId = ContactList[0].AccountId;
             List<Contact> contacts = [select id, AccountId, Account.ContactIDs__c from Contact where AccountId = :accId];
+            List<Account> updatedAccounts = new List<Account>();
      for(Contact c: Contacts)
      {
          if(c.Account.contactIDs__c == null )
@@ -26,9 +27,9 @@ public class AccountContactID implements Queueable{
                  c.Account.ContactIds__c += ', ' + c.id;
              }
          }
-         update c.Account;
+         updatedAccounts.add(c.Account);
        }
-         
+         update.updatedAccounts;
    }
 
 }
