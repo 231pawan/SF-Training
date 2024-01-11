@@ -1,0 +1,16 @@
+@isTest
+public class MyCountUpdateTest {
+    @isTest static void testMyCountUpdateTest(){
+        Class__c cls = new Class__c(Name = 'Test Class');
+        INSERT cls;      
+			Student__c st = new student__c(Name='stu',
+                                          LastName__c='?',
+                                          class__c = cls.id);   
+        INSERT st;
+        Test.startTest();
+        Database.SaveResult sr  = Database.update(cls);
+        Test.stopTest();
+         List<Class__c> classes = [SELECT MyCount__c FROM class__c WHERE Name='Test Class'];
+         System.assertEquals(classes[0].MyCount__c,1);
+    }
+}
