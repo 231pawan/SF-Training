@@ -1,10 +1,8 @@
 trigger OpprotunityStageChange on Opportunity (before update) {
-    if(trigger.isUpdate){
         for(Opportunity opp : trigger.New){
             Opportunity oldOpp = trigger.oldMap.get(opp.Id);
             if((oldOpp.StageName != 'CLOSED WON' && oldOpp.StageName != 'CLOSED LOST') && (opp.StageName == 'CLOSED WON' || opp.StageName == 'CLOSED LOST')){
                 opp.CloseDate = Date.today();
             }
         }
-}
 }
