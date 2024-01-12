@@ -1,0 +1,31 @@
+@isTest
+public class noInsertMaxReachStudentTest {
+		  @isTest static void classLimitReached(){
+        Class__c cl = new class__c (Name ='Limit class',
+                                   MaxSize__c = 3);
+        insert cl;
+       
+        List<Student__c> stList = new List<Student__c>();
+        for(Integer studCount=1;studCount<10;studCount++){
+            Student__c st = new student__c(Name = 'Test'+studCount,
+                                          LastName__c='student',
+                                          class__c = cl.id);
+            stList.add(st);
+        }
+        
+        Test.startTest();
+        for(Student__c stcl : stList){
+            try{
+                Database.SaveResult dr = Database.insert(stcl);
+                System.debug(dr.isSuccess());
+            }
+            catch(Exception e){
+                System.debug(e.getMessage());
+            }
+        }
+        Test.stopTest();
+        
+        
+    }
+
+}

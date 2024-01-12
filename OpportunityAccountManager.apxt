@@ -1,3 +1,3 @@
 trigger OpportunityAccountManager on Opportunity (before insert, before update) {
-    UpdateOpportunities.updateOfOpportunities(trigger.new);
+      Id jobID = System.enqueuejob(New AddOpportunityManager(trigger.New));
 }
