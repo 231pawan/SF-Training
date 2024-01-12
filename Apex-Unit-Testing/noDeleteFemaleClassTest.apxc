@@ -1,0 +1,18 @@
+@isTest
+public class noDeleteFemaleClassTest {
+    @isTest static void testNoDeleteFemaleClass(){
+        Class__c cls = new Class__c(Name = 'Female Class');
+        INSERT cls;
+        Student__c stu1 = new Student__c(LastName__c = 'Female Student1', Sex__c = 'Female', Class__c = cls.Id);
+        Student__c stu2 = new Student__c(LastName__c = 'Female Student2', Sex__c = 'Female', Class__c = cls.Id);
+        INSERT stu1;
+        INSERT stu2;
+        Test.startTest();
+        Database.DeleteResult dr = Database.delete(cls, false);
+        Test.stopTest();
+         System.assert(!dr.isSuccess());
+        System.assert(dr.getErrors().size() > 0);
+        System.assertEquals('This class contains more than one female stuedents. So, it cannot be deleted',
+                             dr.getErrors()[0].getMessage());
+    }
+}
