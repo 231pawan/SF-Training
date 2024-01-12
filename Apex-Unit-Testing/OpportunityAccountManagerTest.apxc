@@ -1,0 +1,14 @@
+@isTest
+public class OpportunityAccountManagerTest {
+    @isTest static void testOpportunityAccountManager(){
+        Account acc = new Account(Name = 'Temp Acc');
+        Insert acc;
+        Contact con = new Contact(LastName = 'Temp Con', AccountId = acc.Id);
+        Insert con;
+        Opportunity opp  = new Opportunity(Name = 'Temp opp' , BillToContact__c = con.Id, StageName='Prospecting',closeDate=Date.newInstance(2024, 06, 12));
+        test.startTest();
+        Database.SaveResult sr  = Database.insert(opp);
+        test.stopTest();
+        System.assertEquals(acc.Id , opp.Manager__c);
+    }
+}
