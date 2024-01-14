@@ -1,0 +1,35 @@
+@isTest
+public class restrictHindiTeacherInsertUpdateTest {
+		@isTest
+     static void testRestrictHindiTeacherInsert(){
+        Contact con = new Contact(LastName = 'Test Con', Subject__c = 'Hindi');
+          
+        Test.startTest();
+        
+            try{
+                insert con;
+            }catch(DMLException e){
+                String message = e.getDmlMessage(0);
+                System.assertEquals(message, 'You cannot update or insert the records');
+            }
+
+        Test.stopTest();
+
+    }
+    static void testRestrictHindiTeacherUpdate(){
+        Contact cont = new Contact(LastName = 'Test Con', Subject__c = 'English');
+          insert cont;
+        cont.Subject__c = 'Hindi';
+        Test.startTest();
+        
+            try{
+                update cont;
+            }catch(DMLException e){
+                String message = e.getDmlMessage(0);
+                System.assertEquals(message, 'You cannot update or insert the records');
+            }
+
+        Test.stopTest();
+
+    }
+}
