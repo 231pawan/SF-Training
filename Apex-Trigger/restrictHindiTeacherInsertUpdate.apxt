@@ -1,0 +1,7 @@
+trigger restrictHindiTeacherInsertUpdate on Contact (before insert , before update) {
+    for(Contact con : trigger.New){
+        if(con.subject__c.contains('Hindi')){
+            con.addError('You cannot update or insert the records');
+        }
+    }
+}

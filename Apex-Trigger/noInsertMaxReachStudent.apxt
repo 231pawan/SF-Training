@@ -1,0 +1,12 @@
+trigger noInsertMaxReachStudent on Student__c (before insert) {
+        List<Id> ids = new List<Id>();
+        
+    	for(Student__c student : trigger.New){
+            ids.add(student.Class__c);
+        }
+            List<Class__c> classList = new List<Class__c>([SELECT Id, numberOfStudents__c, MaxSize__c from Class__c where Id = :ids]);
+            if(classList[0].numberOfStudents__c > classList[0].MaxSize__c){
+                student.addError('Cannot insert Student into this class because the max limit has reached');
+            }
+    	}
+ 
