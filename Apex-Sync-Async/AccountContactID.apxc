@@ -1,0 +1,35 @@
+public class AccountContactID implements Queueable{
+        Id contactId;
+        public AccountContactID(Id contactId){
+            this.contactId = contactId;
+        }
+        public void execute(QueueableContext context) {
+                	addAccountId(contactId);
+                }
+		public static void addAccountId(Id contactId){
+         
+   List<Contact> ContactList = [select id, AccountId, Account.ContactIDs__c from contact where id =: contactId];
+        Id accId = ContactList[0].AccountId;
+            List<Contact> contacts = [select id, AccountId, Account.ContactIDs__c from Contact where AccountId = :accId];
+            List<Account> updatedAccounts = new List<Account>();
+     for(Contact c: Contacts)
+     {
+         if(c.Account.contactIDs__c == null )
+         {
+             c.Account.contactIDs__c = c.id ;
+         }
+         else
+
+         {
+         List <String> listOfContact = c.Account.contactIDs__c.split(',');
+             if(!listOfContact.contains(c.id))
+             {
+                 c.Account.ContactIds__c += ', ' + c.id;
+             }
+         }
+         updatedAccounts.add(c.Account);
+       }
+         update updatedAccounts;
+   }
+
+}
