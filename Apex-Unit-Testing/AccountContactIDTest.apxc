@@ -1,22 +1,28 @@
 @isTest
 public class AccountContactIDTest {
-		@isTest public static void testAddAccountId() {
-        Account testAccount = new Account(Name='Pawanks');
+    
+    @testSetup
+    static void setupTestData() {
+        Account testAccount = new Account(Name = 'Pawanks');
         insert testAccount;
-        
-        Contact testContact = new Contact(AccountId = testAccount.Id,LastName='swami');
+
+        Contact testContact = new Contact(AccountId = testAccount.Id, LastName = 'swami');
         insert testContact;
+    }
+
+    @isTest
+    public static void testAddAccountId() {
+        Contact testContact = [SELECT Id, AccountId, Account.ContactIds__c FROM Contact WHERE LastName = 'swami' LIMIT 1];
+
         AccountContactID.addAccountId(testContact.Id);
-        
-        
+
         Contact updatedContact = [SELECT Id, AccountId, Account.ContactIds__c FROM Contact WHERE Id = :testContact.Id];
-        Account updatedAccount = [SELECT Id, ContactIds__c FROM Account WHERE Id = :testAccount.Id];
-        
+        Account updatedAccount = [SELECT Id, ContactIds__c FROM Account WHERE Id = :testContact.AccountId];
+
         System.assertNotEquals(null, updatedContact.Account.ContactIds__c, 'ContactIds__c should not be null');
         System.assert(updatedContact.Account.ContactIds__c.contains(updatedContact.Id), 'ContactIds__c should contain the contact Id');
-        
+
         System.assertNotEquals(null, updatedAccount.ContactIds__c, 'ContactIds__c on Account should not be null');
         System.assert(updatedAccount.ContactIds__c.contains(updatedContact.Id), 'ContactIds__c on Account should contain the contact Id');
     }
-
-}	
+}
