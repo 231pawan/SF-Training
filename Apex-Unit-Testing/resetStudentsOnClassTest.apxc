@@ -11,7 +11,6 @@ public class resetStudentsOnClassTest {
             StudentsList.add(student);
         }
         INSERT StudentsList;
-        UPDATE testClass;
 
         testClass.Custom__c ='Reset';
         Test.startTest();

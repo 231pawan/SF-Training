@@ -6,23 +6,23 @@ public class noInsertMaxReachStudentTest {
         insert testClass;
        
         List<Student__c> studentList = new List<Student__c>();
-        for(Integer studCount=1;studCount<10;studCount++){
+        for(Integer studCount=1;studCount<4;studCount++){
             Student__c testStudent = new student__c(Name = 'Test'+studCount,
                                           LastName__c='student',
                                           class__c = testClass.id);
             studentList.add(testStudent);
         }
-        
+        INSERT studentList;
+        Student__c oneMoreStudent = new Student__c(Name = 'Test ', LastName__c = 'Student', Class__c = testClass.id);
         Test.startTest();
-        for(Student__c student : studentList){
+        
             try{
-                Database.SaveResult dr = Database.insert(student);
+                Database.SaveResult dr = Database.insert(oneMoreStudent);
                 System.debug(dr.isSuccess());
             }
             catch(Exception e){
                 System.debug(e.getMessage());
             }
-        }
         Test.stopTest();
         
         

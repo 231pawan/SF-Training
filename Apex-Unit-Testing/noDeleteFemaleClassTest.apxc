@@ -3,10 +3,12 @@ public class noDeleteFemaleClassTest {
     @isTest static void testNoDeleteFemaleClass(){
         Class__c cls = new Class__c(Name = 'Female Class');
         INSERT cls;
-        Student__c stu1 = new Student__c(LastName__c = 'Female Student1', Sex__c = 'Female', Class__c = cls.Id);
-        Student__c stu2 = new Student__c(LastName__c = 'Female Student2', Sex__c = 'Female', Class__c = cls.Id);
-        INSERT stu1;
-        INSERT stu2;
+        List<Student__c> studentList = new List<Student__c>{
+    new Student__c(LastName__c = 'Female Student1', Sex__c = 'Female', Class__c = cls.Id),
+    new Student__c(LastName__c = 'Female Student2', Sex__c = 'Female', Class__c = cls.Id)
+};
+
+INSERT studentList;
         Test.startTest();
         Database.DeleteResult dr = Database.delete(cls, false);
         Test.stopTest();
