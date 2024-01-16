@@ -16,6 +16,7 @@ public class restrictHindiTeacherInsertUpdateTest {
         Test.stopTest();
 
     }
+    @isTest
     static void testRestrictHindiTeacherUpdate(){
         Contact cont = new Contact(LastName = 'Test Con', Subject__c = 'English');
           insert cont;
