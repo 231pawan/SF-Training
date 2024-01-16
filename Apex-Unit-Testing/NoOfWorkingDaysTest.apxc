@@ -2,7 +2,6 @@
 public class NoOfWorkingDaysTest {
  @isTest
     static void testNoOfDays() {
-       
         Date startDate1 = Date.newInstance(2023, 7, 1);
         Date endDate1 = Date.newInstance(2023, 7, 1);
         Integer result1 = StudentNames.getWorkingDays(startDate1, endDate1);
@@ -11,14 +10,20 @@ public class NoOfWorkingDaysTest {
         
         Date startDate2 = Date.newInstance(2023, 7, 1); 
         Date endDate2 = Date.newInstance(2023, 7, 2); 
-        Integer result2 = StudentNames.getWorkingDays(startDate3, endDate3);
-        System.assertEquals(0, result3, 'Incorrect number of working days');
-
+        Integer result2 = StudentNames.getWorkingDays(startDate2, endDate2);
+        System.assertEquals(0, result2, 'Incorrect number of working days');
+		
         
         Date startDate3 = Date.newInstance(2023, 7, 1); 
         Date endDate3 = Date.newInstance(2023, 7, 7); 
-        Integer result3 = StudentNames.getWorkingDays(startDate4, endDate4);
-        System.assertEquals(5, result4, 'Incorrect number of working days');
+        Integer result3 = StudentNames.getWorkingDays(startDate3, endDate3);
+        System.assertEquals(5, result3, 'Incorrect number of working days');
+        
+        Date startDate4 = Date.newInstance(2023, 7, 1); 
+        Date endDate4 = Date.newInstance(2023, 7, 10); 
+        Integer result4 = StudentNames.getWorkingDays(startDate4, endDate4);
+        System.assertEquals(6, result4, 'Correct number of days');
+        
     }
 
 }
