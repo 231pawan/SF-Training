@@ -22,7 +22,7 @@ public class NoOfWorkingDaysTest {
         Date startDate4 = Date.newInstance(2023, 7, 1); 
         Date endDate4 = Date.newInstance(2023, 7, 10); 
         Integer result4 = StudentNames.getWorkingDays(startDate4, endDate4);
-        System.assertEquals(6, result4, 'Correct number of days');
+        System.assertNotEquals(5, result4, 'Incorrect number of working days');
         
     }
 

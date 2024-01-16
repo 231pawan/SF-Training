@@ -1,25 +1,25 @@
 @isTest
 public class resetStudentsOnClassTest {
 		 @isTest static void studentsDel(){
-        Class__c c = new class__C(Name='new test class');
-        INSERT c;
+        Class__c testClass = new class__C(Name='new test class');
+        INSERT testClass;
         List<Student__c> StudentsList = new List<Student__C>();
         for(Integer noOfStud=0;noOfStud<5;noOfStud++){
             Student__c student = new student__c(Name='test student '+noOfStud,
                                                LastName__c='?',
-                                               class__c = c.id);
+                                               class__c = testClass.id);
             StudentsList.add(student);
         }
         INSERT StudentsList;
-        UPDATE c;
+        UPDATE testClass;
 
-        c.Custom__c ='Reset';
+        testClass.Custom__c ='Reset';
         Test.startTest();
-        Database.SaveResult sr = Database.update(c);
+        Database.SaveResult sr = Database.update(testClass);
         Test.stopTest();
         
-        List<class__c> cll = [SELECT NumberOfStudents__c FROM Class__C WHERE name='new test class'];
-        System.assertEquals(cll[0].NumberOfStudents__c.intValue(),0);
+        List<class__c> UpdatedClass = [SELECT NumberOfStudents__c FROM Class__C WHERE name='new test class'];
+        System.assertEquals(UpdatedClass[0].NumberOfStudents__c.intValue(),0);
     }
 
 }
