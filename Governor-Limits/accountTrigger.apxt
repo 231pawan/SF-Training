@@ -1,0 +1,20 @@
+trigger accountTrigger on Account (before delete, before insert, before update) {
+            List<Account> accountWithBoth = [select id, name,
+             (select id, name, closedate, stagename from Opportunities where accountId IN :Trigger.newMap.keySet() and (StageName='Closed - Lost' or StageName = 'Closed - Won'))
+           from Account where Id IN :Trigger.newMap.keySet()];
+
+                       for(Account acc : accountWithBoth){
+                               for(Opportunity opp: acc.Opportunities){
+                                    if(opp.StageName == 'Closed - Won'){
+                                          System.debug('Do more logic here...');
+                                     }
+                                    else if(opp.StageName =='Closed - Lost'){
+                             System.debug('Do more logic here...');
+                            }
+                       }
+                  }
+   }
+
+// problem - multiple queries can be written into 1
+
+
