@@ -10,10 +10,10 @@ trigger accountLimitExample on Account (after delete, after insert, after update
 
 
 
-        System.debug('1. Number of Queries used in this Apex code so far: ' + Limits.getLimitQueries());
-        System.debug('2. Number of rows queried in this Apex code so far: ' + Limits.getLimitDmlRows());
-         System.debug('3. Number of DML statements used so far: ' + Limits.getLimitDmlStatements());
-         System.debug('4. Amount of CPU time (in ms) used so far: ' + Limits.getLimitCpuTime());
+        System.debug('1. Number of Queries used in this Apex code so far: ' + Limits.getQueries());
+        System.debug('2. Number of rows queried in this Apex code so far: ' + Limits.getDmlRows());
+         System.debug('3. Number of DML statements used so far: ' + Limits.getDmlStatements());
+         System.debug('4. Amount of CPU time (in ms) used so far: ' + Limits.getCpuTime());
 
 //Proactively determine if there are too many Opportunities to update and avoid governor limits
 
