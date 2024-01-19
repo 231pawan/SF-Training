@@ -24,7 +24,8 @@ public class noInsertMaxReachStudentTest {
                 System.debug(e.getMessage());
             }
         Test.stopTest();
-        
+               Class__c UpdatedClass = [SELECT NumberOfStudents__c , MaxSize__c FROM Class__c WHERE Id = :testClass.Id];
+        System.assertEquals(UpdatedClass.NumberOfStudents__c, UpdatedClass.MaxSize__c);
         
     }
 

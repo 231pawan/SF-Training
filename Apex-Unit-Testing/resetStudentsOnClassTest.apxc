@@ -18,7 +18,7 @@ public class resetStudentsOnClassTest {
         Test.stopTest();
         
         List<class__c> UpdatedClass = [SELECT NumberOfStudents__c FROM Class__C WHERE name='new test class'];
-        System.assertEquals(UpdatedClass[0].NumberOfStudents__c.intValue(),0);
+        System.assertEquals(UpdatedClass[0].NumberOfStudents__c,0);
     }
 
 }
