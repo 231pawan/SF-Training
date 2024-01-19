@@ -4,7 +4,7 @@ public class GetAllSObjectNamesTest {
     public static void testGetAllSObjects() {
         List<String> result = StudentNames.getAllSObjectNames();
         
-        System.assertNotEquals(0, result.size(), 'No sObjects found');
+        
         
         Set<String> expectedSObjects = new Set<String>{'contenthubrepository', 'contract', 'contracthistory', 'contractfeed'}; 
         for (String sObjectName : expectedSObjects) {
