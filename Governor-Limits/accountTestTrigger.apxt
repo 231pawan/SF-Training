@@ -2,7 +2,6 @@ trigger accountTestTrigger on Account (before insert, before update) {
     Set<Id> accountIds = trigger.NewMap.keySet();
    List<Contact> contacts = [select id, salutation, firstname, lastname, email from Contact where accountId IN : accountIds];
         for(Contact c: contacts) {
-         System.debug('Contact Id[' + c.Id + '], FirstName[' + c.firstname + '],vLastName[' + c.lastname +']');
         c.Description=c.salutation + ' ' + c.firstName + ' ' + c.lastname;
     }
     update contacts;
