@@ -1,0 +1,29 @@
+@isTest
+public class MapOfStudentTest {
+		@isTest
+    static void testMapOfStudent() {
+        List<Class__c> testClasses = new List<Class__c>{
+            new Class__c(Name = 'Class A'),
+            new Class__c(Name = 'Class B')
+        };
+        insert testClasses;
+
+        List<Student__c> testStudents = new List<Student__c>{
+            new Student__c(LastName__c = 'Student 1', Class__c = testClasses[0].Id),
+            new Student__c(LastName__c = 'Student 2', Class__c = testClasses[0].Id),
+            new Student__c(LastName__c = 'Student 3', Class__c = testClasses[1].Id)
+        };
+        insert testStudents;
+
+        Map<String, Set<Id>> result = Studentnames.mapOfStudent();
+
+        System.assertEquals(2, result.size(), 'Number of classes should be 2');
+
+        Set<Id> classAStudentIds = result.get('Class A');
+        Set<Id> classBStudentIds = result.get('Class B');
+
+        System.assertEquals(2, classAStudentIds.size(), 'Number of students in Class A should be 2');
+        System.assertEquals(1, classBStudentIds.size(), 'Number of students in Class B should be 1');
+
+    }
+}
