@@ -1,0 +1,14 @@
+<apex:page standardController="Class__c" >
+    <apex:form >
+        <apex:pageBlock title="Edit Class">
+            <apex:pageMessages />
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}" />
+                <apex:commandButton value="Cancel" action="{!cancel}" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Class Information">
+                <apex:inputField value="{!Class__c.Name}" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,14 @@
+<apex:page standardController="Student__c" >
+    <apex:form >
+        <apex:pageBlock title="Edit Student">
+            <apex:pageMessages />
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}" />
+                <apex:commandButton value="Cancel" action="{!cancel}" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Student Information">
+                <apex:inputField value="{!Student__c.LastName__c}" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

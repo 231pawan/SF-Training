@@ -1,0 +1,87 @@
+public with sharing class Pagination {
+    public String billingCity { get; set; }
+    public String billingState { get; set; }
+    public String billingCountry { get; set; }
+    public Integer noOfRecords { get; set; }
+    public Integer size { get; set; }
+    public ApexPages.StandardSetController standardSetCtrl { get; set; }
+
+    public Pagination(String billingCity, String billingState, String billingCountry) {
+        this.billingCity = billingCity;
+        this.billingState = billingState;
+        this.billingCountry = billingCountry;
+        initializeController();
+    }
+
+    public Pagination() {
+        initializeController();
+    }
+
+    private void initializeController() {
+        size = 10;
+        String queryString = 'SELECT Id, Name, Type, BillingCity, BillingState, BillingCountry FROM Account ' +
+                             'WHERE BillingCity LIKE \'%' + billingCity + '%\' ' +
+                             'AND BillingState LIKE \'%' + billingState + '%\' ' +
+                             'AND BillingCountry LIKE \'%' + billingCountry + '%\' ' +
+                             'ORDER BY Name';
+
+        List<Account> accountList = Database.query(queryString);
+
+        standardSetCtrl = new ApexPages.StandardSetController(accountList);
+        standardSetCtrl.setPageSize(size);
+        noOfRecords = standardSetCtrl.getResultSize();
+    }
+
+    public List<Account> getAccounts() {
+        return (List<Account>)standardSetCtrl.getRecords();
+    }
+
+    public PageReference searchAccounts() {
+        initializeController();
+        return null;
+    }
+
+    public PageReference refresh() {
+        standardSetCtrl = null;
+        initializeController();
+        standardSetCtrl.setPageNumber(1);
+        return null;
+    }
+
+    public Boolean hasNext {
+        get {
+            return standardSetCtrl.getHasNext();
+        }
+        set;
+    }
+
+    public Boolean hasPrevious {
+        get {
+            return standardSetCtrl.getHasPrevious();
+        }
+        set;
+    }
+
+    public Integer pageNumber {
+        get {
+            return standardSetCtrl.getPageNumber();
+        }
+        set;
+    }
+
+    public void first() {
+        standardSetCtrl.first();
+    }
+
+    public void last() {
+        standardSetCtrl.last();
+    }
+
+    public void previous() {
+        standardSetCtrl.previous();
+    }
+
+    public void next() {
+        standardSetCtrl.next();
+    }
+}
