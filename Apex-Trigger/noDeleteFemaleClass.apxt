@@ -1,0 +1,9 @@
+trigger noDeleteFemaleClass on Class__c (before delete) {
+	
+        List<Class__c> query=[select Name,(SELECT Name FROM Students__r WHERE sex__c='Female') FROM class__c WHERE Id IN : trigger.New];
+    	for(class__c nfc:query){
+        	if(nfc.students__r.size() > 1){
+            	Trigger.oldMap.get(nfc.id).addError('This class contains more than one female stuedents. So, it cannot be deleted');
+        	}
+    	}
+    } 

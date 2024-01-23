@@ -1,0 +1,72 @@
+@isTest
+public class TestRestrictHindiTeacherInsertUpdate {
+
+    @isTest
+    public static void testRestrictHindiTeacherInsertHindi() {
+        Contact hindiContact = new Contact(
+            LastName = 'Doe',
+            subject__c = 'Hindi'
+        );
+
+        try {
+            insert hindiContact;
+        } catch (DmlException e) {
+            System.assertEquals('You cannot update or insert the records', e.getDmlMessage(0));
+        }
+
+        
+    }
+     @isTest
+    public static void testRestrictHindiTeacherInsertNonHindi() {
+       
+
+        Contact nonHindiContact = new Contact(
+            LastName = 'Doe',
+            subject__c = 'Math'
+        );
+
+        Test.startTest();
+        insert nonHindiContact;
+        Test.stopTest();
+
+        System.assertNotEquals(null, nonHindiContact.Id);
+    }
+
+    @isTest
+    public static void testRestrictHindiTeacherUpdateHindi() {
+        Contact contact = new Contact(
+            LastName = 'Doe',
+            subject__c = 'Math'
+        );
+
+        insert contact;
+
+        contact.subject__c = 'Hindi';
+
+        try {
+            update contact;
+        } catch (DmlException e) {
+            System.assertEquals('You cannot update or insert the records', e.getDmlMessage(0));
+        }
+
+        
+    }
+        @isTest
+    public static void testRestrictHindiTeacherUpdateNonHindi() {
+        Contact contact = new Contact(
+            LastName = 'Doe',
+            subject__c = 'Math'
+        );
+
+        insert contact;
+
+       
+        contact.subject__c = 'Science';
+
+        Test.startTest();
+        update contact;
+        Test.stopTest();
+
+        System.assertNotEquals(null, contact.Id);
+    }
+}

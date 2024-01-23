@@ -1,0 +1,30 @@
+@isTest
+public class OpportunityAccountManagerTest {
+    @isTest static void testOpportunityAccountManagerInsert(){
+        Account testAccount= new Account(Name = 'Temp Acc');
+        Insert testAccount;
+        Contact testContact = new Contact(LastName = 'Temp Con', AccountId = testAccount.Id);
+        Insert testContact;
+        Opportunity testOpportunity  = new Opportunity(Name = 'Temp opp' , BillToContact__c = testContact.Id, AccountId = testAccount.Id, StageName='Prospecting',closeDate=Date.newInstance(2024, 06, 12));
+       
+        test.startTest();
+        Database.SaveResult sr  = Database.insert(testOpportunity);
+        test.stopTest();
+        List<Opportunity> updatedOpportunity  = [SELECT Manager__c FROM Opportunity WHERE Id = :testOpportunity.Id];
+        System.assertEquals(testAccount.Id , updatedOpportunity[0].Manager__c);
+    }
+    @isTest static void testOpportunityAccountManagerUpdate(){
+        Account testAccount= new Account(Name = 'Temp Acc');
+        Insert testAccount;
+        Contact testContact = new Contact(LastName = 'Temp Con', AccountId = testAccount.Id);
+        Insert testContact;
+        Opportunity testOpportunity  = new Opportunity(Name = 'Temp opp' , BillToContact__c = testContact.Id, AccountId = testAccount.Id, StageName='Prospecting',closeDate=Date.newInstance(2024, 06, 12));
+        Insert testOpportunity;
+   		testOpportunity.Description = 'Description';
+        test.startTest();
+        Database.SaveResult sr  = Database.update(testOpportunity);
+        test.stopTest();
+        List<Opportunity> updatedOpportunity  = [SELECT Manager__c FROM Opportunity WHERE Id = :testOpportunity.Id];
+        System.assertEquals(testAccount.Id , updatedOpportunity[0].Manager__c);
+    }
+}

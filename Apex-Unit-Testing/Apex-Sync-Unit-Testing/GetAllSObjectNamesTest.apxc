@@ -1,0 +1,16 @@
+@isTest
+public class GetAllSObjectNamesTest {
+	   @IsTest
+    public static void testGetAllSObjects() {
+        List<String> result = StudentNames.getAllSObjectNames();
+        
+        
+        
+        Set<String> expectedSObjects = new Set<String>{'contenthubrepository', 'contract', 'contracthistory', 'contractfeed'}; 
+        for (String sObjectName : expectedSObjects) {
+
+            System.assert(result.contains(sObjectName), sObjectName + ' is not in the expected sObjects list');
+        }
+    }
+
+}

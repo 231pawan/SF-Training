@@ -1,0 +1,7 @@
+trigger restrictTeacherInsertUpdate on Contact (before insert, before update) {
+        List<Teach__c> teach = [SELECT Id ,Contact__r.Id from Teach__c WHERE Contact__r.Id IN :Trigger.New and Subject__c In ('Hindi')];
+        System.debug(teach.size());
+        for(Teach__c hindiSub :teach){
+            Trigger.newMap.get(hindiSub.Contact__r.Id).addError('You can not update or insert records');
+        }  
+}
