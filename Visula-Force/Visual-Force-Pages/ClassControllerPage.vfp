@@ -1,0 +1,34 @@
+<apex:page controller="ClassController">
+    <apex:form>
+        <apex:pageBlock title="Manage Classes">
+            <apex:pageMessages />
+
+            <apex:pageBlockTable value="{!classList}" var="cls">
+                <apex:column value="{!cls.Name}" headerValue="Class Name"/>
+                <apex:column>
+                    <apex:commandLink action="{!editClass}" value="Edit">
+                        <apex:param name="editId" value="{!cls.Id}" assignTo="{!editClassId}"/>
+                    </apex:commandLink>
+                </apex:column>
+                <apex:column>
+                    <apex:commandLink action="{!deleteClass}" value="Delete">
+                        <apex:param name="deleteId" value="{!cls.Id}" assignTo="{!deleteClassId}"/>
+                    </apex:commandLink>
+                </apex:column>
+            </apex:pageBlockTable>
+
+            <apex:outputPanel id="editSection" rendered="{!isEditMode}">
+                <apex:pageBlockSection title="Edit Class">
+                    <apex:inputField value="{!editClassObj.Name}" />
+                    <apex:inputField value="{!editClassObj.DetailedDescription__c}" />
+                    <apex:inputField value="{!editClassObj.MaxSize__c}" />
+                    <apex:inputField value="{!editClassObj.MyCount__c}" />
+                   
+                    
+                    <apex:commandButton value="Save" action="{!saveClass}" rerender="editSection,classList"/>
+                </apex:pageBlockSection>
+            </apex:outputPanel>
+
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
