@@ -1,0 +1,18 @@
+<apex:page controller="GenerateStudentPDFController" renderAs="pdf">
+    <apex:form>
+        <apex:actionFunction name="generatePdfFunction" action="{!generatePDF}" rerender="dummy"/>
+        
+        <apex:outputPanel id="dummy"/>
+
+        <apex:pageBlock title="Student Details">
+            <apex:pageBlockSection columns="1">
+                <apex:outputText>Name: {!Student.Name}</apex:outputText>
+                <apex:outputText>Class: {!Student.Class__c}</apex:outputText>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+
+    <script>
+        generatePdfFunction();
+    </script>
+</apex:page>

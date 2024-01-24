@@ -1,0 +1,7 @@
+<apex:page standardController="Contact">
+    <apex:pageBlock >
+        <div style="background-color: #337ab7; color: #fff; padding: 10px;">
+            <apex:outputText value="{!IF(Contact.RecordType.Name == 'TGT', 'TGT Teacher', 'PGT Teacher')}"/>
+        </div>
+    </apex:pageBlock>
+</apex:page>
