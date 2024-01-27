@@ -20,10 +20,10 @@ public with sharing class Pagination {
     private void initializeController() {
         size = 10;
         String queryString = 'SELECT Id, Name, Type, BillingCity, BillingState, BillingCountry FROM Account ' +
-                             'WHERE BillingCity LIKE \'%' + billingCity + '%\' ' +
-                             'AND BillingState LIKE \'%' + billingState + '%\' ' +
-                             'AND BillingCountry LIKE \'%' + billingCountry + '%\' ' +
-                             'ORDER BY Name';
+                     'WHERE BillingCity = \'' + billingCity + '\' ' +
+                     'AND BillingState = \'' + billingState + '\' ' +
+                     'AND BillingCountry = \'' + billingCountry + '\' ' +
+                     'ORDER BY Name';
 
         List<Account> accountList = Database.query(queryString);
 
