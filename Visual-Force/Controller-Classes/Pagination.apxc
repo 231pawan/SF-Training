@@ -6,27 +6,40 @@ public with sharing class Pagination {
     public Integer size { get; set; }
     public ApexPages.StandardSetController standardSetCtrl { get; set; }
 
-    public Pagination(String billingCity, String billingState, String billingCountry) {
+    // Constructor with parameters for dynamic query
+    public Pagination(String billingCity, String billingState, String billingCountry ,Integer noOfRecords) {
         this.billingCity = billingCity;
         this.billingState = billingState;
         this.billingCountry = billingCountry;
+        if(noOfRecords == null){
+            this.noOfRecords = 0;
+        }else
+        this.noOfRecords = noOfRecords;
         initializeController();
     }
 
+    // Default constructor for other use cases
     public Pagination() {
+        noOfRecords = 0;
         initializeController();
     }
 
     private void initializeController() {
         size = 10;
-        String queryString = 'SELECT Id, Name, Type, BillingCity, BillingState, BillingCountry FROM Account ' +
+        // Build the dynamic query based on user input
+      
+
+String queryString = 'SELECT Id, Name, Type, BillingCity, BillingState, BillingCountry FROM Account ' +
                      'WHERE BillingCity = \'' + billingCity + '\' ' +
                      'AND BillingState = \'' + billingState + '\' ' +
                      'AND BillingCountry = \'' + billingCountry + '\' ' +
-                     'ORDER BY Name';
+                     'ORDER BY Name ' +
+                     'LIMIT ' + String.valueOf(noOfRecords);
+
 
         List<Account> accountList = Database.query(queryString);
 
+        // Create the StandardSetController using the list of accounts
         standardSetCtrl = new ApexPages.StandardSetController(accountList);
         standardSetCtrl.setPageSize(size);
         noOfRecords = standardSetCtrl.getResultSize();
@@ -38,6 +51,7 @@ public with sharing class Pagination {
 
     public PageReference searchAccounts() {
         initializeController();
+        // Return the same page reference to refresh the page
         return null;
     }
 
@@ -45,6 +59,7 @@ public with sharing class Pagination {
         standardSetCtrl = null;
         initializeController();
         standardSetCtrl.setPageNumber(1);
+        // Return the same page reference to refresh the page
         return null;
     }
 

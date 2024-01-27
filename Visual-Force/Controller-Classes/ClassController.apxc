@@ -1,30 +1,36 @@
 public class ClassController {
-    public List<Class__c> classList { get; set; }
+    public Map<Id,Class__c> classMap { get; set; }
+    public List<Class__c> classList{get; set;}
     public Id editClassId { get; set; }
     public Id deleteClassId { get; set; }
     public Class__c editClassObj { get; set; }
     public Boolean isEditMode { get; set; }
 
     public ClassController() {
-        classList = [SELECT Id, Name, DetailedDescription__c, MaxSize__c, MyCount__c FROM Class__c];
+        // Initialize variables
+        classMap = new Map<Id,Class__c>([SELECT Id, Name, DetailedDescription__c, MaxSize__c, MyCount__c FROM Class__c]);
         editClassObj = new Class__c();
         isEditMode = false;
+        classList = new List<Class__c>(classMap.values());
     }
 
+    // Method to enter edit mode
     public void editClass() {
         isEditMode = true;
-        editClassObj = [SELECT Id, Name , DetailedDescription__c, MaxSize__c, MyCount__c FROM Class__c WHERE Id = :editClassId LIMIT 1];
+        editClassObj = classMap.get(editClassId);
     }
 
+    // Method to save changes
     public void saveClass() {
         update editClassObj;
         isEditMode = false;
         editClassObj = new Class__c();
     }
 
+    // Method to delete a class
     public void deleteClass() {
         if (deleteClassId != null) {
-            delete [SELECT Id FROM Class__c WHERE Id = :deleteClassId LIMIT 1];
+            delete classMap.get(deleteClassId);
         }
     }
 }
