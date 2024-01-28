@@ -4,153 +4,201 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metacube Parking System</title>
+    <meta name="viewport" content="width=   , initial-scale=1.0">
     <link rel="stylesheet" href="home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4ec4d30d9c.js" crossorigin="anonymous"></script>
+    <title>Metacube Parking System</title>
 </head>
 
 <body>
-    <!-- Navigation Bar -->
-    <div class="navigation-section">
-        <img src="logo.jpg" alt="" id = "metacube-logo">
-        <nav class="nav-items-list">
-            <a class="nav-item" href="#employee-information">Add Employee</a> &nbsp;
-            <a class="nav-item" href="#vehicle-information">Add Vehicle</a> &nbsp;
-            <a class="nav-item" href="#give-feedback">Give Feedback</a> &nbsp;
-            <a class="nav-item" href="#pricing-section">Pricing</a> &nbsp;
+    <img style="position: fixed;" id="parkingImage" src="Images/parking.jpeg" height="100%" width="100%" alt="Parking">
+    <div class="main">
+
+        
+        <nav>
+            <div id="navbar" align='center'>
+                <div class="in-nav">
+                    <a href="metaparking.html"><b>Metacube Parking System</b></a>
+                    <div id="nav-div">
+                        <button style="width: 63px;">Sign In</button>
+                        <button style="width: 63px;">Sign Up</button>
+                    </div>
+                </div>
+            </div>
         </nav>
-    </div>
 
-    <!-- Landing Page image -->
-    <div class="homepage-welcome-section">
-            <p id="greeting-message">Welcome to metacube parking system.</p>
-            
-    <div class="main-form-region">
-        <button class="collapsable-form-btn" id="employee-information">Add Employee</button>
-        <div class="content">
-            <div class="form-section">
-                <form action="" method="POST" class="details-form">
-                    <label for="emp-name">Name: </label>
-                    <input type="text" id="emp-name" name="fullName" required class="details-form-input">
-                    <label for="">Gender: </label>
-                    <div id="form-gender-field" class="details-form-input">
-                        <input type="radio" name="employeeGender" value="Male" required> Male
-                        <input type="radio" name="employeeGender" value="Female" required> Female
-                    </div>
-
-                    <label for="employee-mail">Email: </label>
-                    <input type="email" name="employeeEmail" id="employee-mail" required class="details-form-input">
-                    <label for="emp-password">Password:</label>
-                    <input type="password" name="employeePassword" id="emp-password" required
-                        class="details-form-input">
-                    <label for="re-enter-password">Confirm Password: </label>
-                    <input type="password" name="confirmPassword" id="re-enter-password" required
-                        class="details-form-input">
-                    <label for="contact-number">Phone Number: </label>
-                    <input type="text" name="employeePassword" id="contact-number" required class="details-form-input">
-                    <div class="form-button-section">
-                        <input type="submit" value="save" class="submit-buttons">
-                        <input type="reset" value="cancel" class="reset-buttons">
-                    </div>
-                </form>
-            </div>
-
-        </div>
-
-        <!-- Add vehicle section -->
-        <button class="collapsable-form-btn" id="vehicle-information">Add Vehicle</button>
-        <div class="content">
-            <div class="form-section">
-                <form action="" class="details-form">
-                    <label for="vehicle-company ">Vehicle Company: </label>
-                    <input type="text" name=" vehicleCompanyName" id="vehicle-company" required
-                        class="details-form-input">
-                    <label for="vehicle-model">Vehicle Model: </label>
-                    <input type="text" name="vehicleModelName" id="vehicle-model" required class="details-form-input">
-                    <label for="type-of-vehicle">Select Type of Vehicle: </label>
-                    <select id="type-of-vehicl" class="details-form-input" required>
-                        <option value="Two Wheeler"> Two Wheeler</option>
-                        <option value="Four Wheeler">Four Wheeler</option>
-                    </select>
-                    <label for="vehicle-number">Vehicle Number: </label>
-                    <input type="text" id="vehicle-number" name="vehicleNumber" required class="details-form-input">
-                    <label for="employee-id">Employee Id: </label>
-                    <input type="text" id="employee-id" name="employeeId" required class="details-form-input">
-                    <label for="vehicle-identification">Identification: </label><br>
-                    <textarea name="identificationOfVehicle" id="vehicle-identification" cols="30" rows="5" required
-                        class="details-form-input"></textarea>
-                    <div class="form-button-section">
-                        <input type="submit" value="submit" class="submit-buttons">
-                        <input type="reset" value="cancel" class="reset-buttons">
-                    </div>
-
-                </form>
-            </div>
-        </div>
-
-        <!-- Feedback Section -->
-        <button class="collapsable-form-btn" id="give-feedback">Give Feedback</button>
-        <div class="content">
-            <div class="form-section">
-                <form action="" class="details-form">
-                    <label for="name-input">Name:</label>
-                    <input type="text" required id="name-input" class="details-form-input">
-                    <label for="mail-input" >Email:</label>
-                    <input type="email" required id="mail-input" class="details-form-input">
-                    <label for="feedback-subject-input">Subject:</label>
-                    <input type="text" id="feedback-subject-input" class="details-form-input">
-                    <label for="message-box">Message:</label><br>
-                    <textarea name="" id="message-box" cols="30" rows="10" class="details-form-input"></textarea>
-                    <div class="form-button-section">
-                        <input type="submit" value="Send Mail" class="submit-buttons">
-                        <input type="reset" value="cancel" class="reset-buttons">
-                    </div>
-
-                </form>
-            </div>
-        </div>
-
-        <!-- Pricing Section -->
-        <button class="collapsable-form-btn" id="pricing-section">Pricing</button>
-        <div class="content">
-            <div class="pricing-cards-section">
-                <div class="pricing-card">
-                    <h3>Cycle</h3>
-                    <div class="card-price-value">
-                        $100
-                        /month
-                    </div>
-                    <p>$5 Daily</p>
-                    <p>$100 Monthly</p>
-                    <p>$500 Yearly</p>
-                    <button class="purchase-btn">Purchase Now</button>
+        <!-- Employee region -->
+        <div class="formClass">
+            <h2 id="addEmployee">ADD EMPLOYEE</h2>
+            <form name="addEmployee" class="hidden" id="addEmployeeForm">
+                <hr>
+                <div id="nameItem" class="field">
+                    <label for="fname">Full Name:</label><br>
+                    <input type="text" id="fname" name="fname" placeholder="Name" required><br><br>
+                    <button type="button" id="btn next-btn" onclick="setName(this)"><i style="color: black;"
+                            class="fa-solid fa-arrow-right-long"></i></button><br>
                 </div>
-                <div class="pricing-card">
-                    <h3>Motor Cycle</h3>
-                    <div class="card-price-value">
-                        $200
-                        /month
-                    </div>
-                    <p>$10 Daily</p>
-                    <p>$200 Monthly</p>
-                    <p>$1000 Yearly</p>
-                    <button class="purchase-btn">Purchase Now</button>
+                <div class="hiddenItem" id="genderItem">
+                    <p id="genderInput"></p>
+                    <label for="Gender">Gender: </label>
+                    <input type="radio" name="gender"> Male
+                    <input type="radio" name="gender"> Female
+                    <input type="radio" name="gender"> Others<br><br>
+                    <button type="button" id="btn next-btn" onclick="showNext(this)"><i style="color: black;"
+                            class="fa-solid fa-arrow-right-long"></i></button><br>
                 </div>
-                <div class="pricing-card">
-                    <h3>Four Wheeler</h3>
-                    <div class="card-price-value">
-                        $500
-                        /month
-                    </div>
-                    <p>$20 Daily</p>
-                    <p>$500 Monthly</p>
-                    <p>$3500 Yearly</p>
-                    <button class="purchase-btn">Purchase Now</button>
+                <div class="hiddenItem field" id="emailItem">
+                    <label for="eid">Email Id:</label><br>
+                    <input type="email" id="email" name="email" placeholder="Email Id"><br><br>
+                    <button type="button" id="btn next-btn" onclick="showPass(this)"><i style="color: black;"
+                            class="fa-solid fa-arrow-right-long"></i></button><br>
                 </div>
-            </div>
-
+                <div class="hiddenItem field" id="passwordItem">
+                    <label for="Password">Password:</label><br>
+                    <input type="password" id="password" name="password" placeholder="Password"
+                        oninput="borderChange(this)"><br><br>
+                    <label for="cpassword">Confirm Password:</label><br>
+                    <input type="password" id="cpassword" name="cpassword" placeholder="Confirm Password"><br><br>
+                    <button type="button" id="btn next-btn" onclick="showContact(this)"><i style="color: black;"
+                            class="fa-solid fa-arrow-right-long"></i></button><br>
+                </div>
+                <div class="hiddenItem field" id="contactItem">
+                    <label for="Number">Contact Number:</label><br>
+                    <input type="number" id="number" name="Number" placeholder="Contact Number"><br><br>
+                    <button type="button" id="btn next-btn" onclick="showVehicle(this)"><i style="color: black;"
+                            class="fa-solid fa-arrow-right-long"></i></button><br>
+                </div>
+            </form>
         </div>
-    </div>
+
+        <!-- Vehicle region -->
+        <div style="display: none;" class="formClass">
+            <h2 id="addVehicle">ADD VEHICLE</h2>
+            <form name="addvehicle" class="hidden" id="addVehicleForm">
+                <hr>
+                <div class="field">
+                    <label for="Vname">Vehicle Name:</label><br>
+                    <input type="text" name="vname" placeholder="Vehicle Name"><br><br>
+                    <button type="button" id="btn next-btn" onclick="showNext(this)"><i style="color: black;"
+                            class="fa-solid fa-arrow-right-long"></i></button><br>
+                </div>
+                <div id="vehicleModelItem " class="hiddenItem field">
+                    <label for="Vmodel">Vehicle Type:</label><br>
+                    <select style="height: 30px; margin-right: 1px;" name="cars" id="veh-type" form="carform">
+                        <option value="cycle">Cycle</option>
+                        <option value="motor-cycle">Motor-Cycle</option>
+                        <option value="car">Car</option>
+                    </select><br><br>
+                    <button type="button" id="btn next-btn" onclick="setVehicle(this)"><i style="color: black;"
+                            class="fa-solid fa-arrow-right-long"></i></button><br>
+                </div>
+
+                <div class="hiddenItem field">
+                    <label for="vnumber">Vehicle Number:</label><br>
+                    <input type="text" name="vnumber" placeholder="Vehicle Number"><br><br>
+                    <button type="button" id="btn next-btn" onclick="showNext(this)"><i style="color: black;"
+                            class="fa-solid fa-arrow-right-long"></i></button><br>
+                </div>
+                <div class="hiddenItem field">
+                    <label for="empid">Employee Id:</label><br>
+                    <input type="text" name="empid" placeholder="Employee Id"><br><br>
+                    <button type="button" id="btn next-btn" onclick="showNext(this)"><i style="color: black;"
+                            class="fa-solid fa-arrow-right-long"></i></button><br>
+                </div>
+                <div class="hiddenItem field">
+                    <label for="empid">Identification:</label><br>
+                    <textarea name="Identification" rows="2" cols="40" placeholder="Identification"></textarea><br><br>
+                    <button type="button" id="btn next-btn" onclick="showNextElement(this)"><i style="color: black;"
+                            class="fa-solid fa-arrow-right-long"></i></button><br>
+                </div>
+            </form>
+        </div>
+
+        <!-- Table region -->
+        <div style="display: none;" class="formClass" id="pricing-div">
+            <h2 id="pricing">PRICING</h2>
+            <div class="" id="pricingTable">
+                <hr>
+                <table align="center" border="solid" border-size="5px" border-collapse:"collapse">
+                    <tr rowspan="4" align="center" class="table-item" id="cycle-price">
+                        <td colspan="4"><b>Cycle
+                                <hr>
+                            </b>
+                            <img src="Images/bicycle.png" height="30%" width="20%" alt="bicycle"><br>
+                            <div class="in-table">
+                                Rs: 5 Daily
+                                <button class="table-btn" type="button" value="5" onclick="setPrice(this)">Select</button><br>
+                            </div>
+                            <div class="in-table">
+                                Rs: 100 Monthly
+                                <button class="table-btn" type="button" value="100" onclick="setPrice(this)">Select</button><br>
+                            </div>
+                            <div class="in-table table-last">
+                                Rs: 500 Yearly
+                                <button class="table-btn" type="button" value="500" onclick="setPrice(this)">Select</button><br>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr rowspan="8" align="center" class="table-item" id="motor-cycle-price">
+                        <td colspan="4"><b>Motor-Cycle</b>
+                            <hr>
+                            <img src="Images/motorcycle.png" height="30%" width="20%" alt="bike"><br>
+                            <div class="in-table">
+                                Rs: 10 Daily
+                                <button class="table-btn" type="button" value="10" onclick="setPrice(this)">Select</button><br>
+                            </div>
+                            <div class="in-table">
+                                Rs: 200 Monthly
+                                <button class="table-btn" type="button" value="200" onclick="setPrice(this)">Select</button><br>
+                            </div>
+                            <div class="in-table table-last">
+                                Rs: 1000 Yearly
+                                <button class="table-btn" type="button" value="1000" onclick="setPrice(this)">Select</button><br>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr rowspan="4" align="center" class="table-item" id="car-price">
+                        <td colspan="4"><b>Four Wheelers </b>
+                            <hr>
+                            <img src="Images/car.png" height="30%" width="20%" alt="car"><br>
+                            <div class="in-table">
+                                Rs: 20 Daily
+                                <button class="table-btn" type="button" value="20" onclick="setPrice(this)">Select</button><br>
+                            </div>
+                            <div class="in-table">
+                                Rs: 500 Monthly
+                                <button class="table-btn" type="button" value="500" onclick="setPrice(this)">Select</button><br>
+                            </div>
+                            <div class="in-table table-last">
+                                Rs: 3500 Yearly
+                                <button class="table-btn" type="button" value="3500" onclick="setPrice(this)">Select</button><br>
+                            </div>
+                        </td>
+                    </tr>
+                </table>  
+            </div>
+        </div>
+            </form>
+        </div>
+
+        <div id="pass" class="formClass">
+            <h2>Confirmation:</h2>
+            <p id="pass-price"></p>
+            <div style="display: flex; justify-content: center; padding-bottom: 1%;">
+                <button style="display: none; width: 10%; margin-right: 10px; height: 4%;" id="inr-btn" onclick="currencyChange(this)">Convert to INR</button>
+                <button style="width: 10%; margin-right: 10px; height: 4%;" id="usd-btn" onclick="currencyChange(this)">Convert to USD</button>
+                <button style="width: 10%; margin-left: 10px; height: 4%;" id="yen-btn" onclick="currencyChange(this)">Convert to Yen</button>
+            </div>
+            <button style="width: 15%;" onclick="complete()">Get Pass</button>
+        </div>
+
+        <div id="final" class="formClass">
+            <h2>Pass Approved</h2>
+            <a href="metaparking.html"><button style="width: 15%;">Done</button></a>
+        </div>
+
+        <script src="index.js"></script>
     </div>
 </body>
 
