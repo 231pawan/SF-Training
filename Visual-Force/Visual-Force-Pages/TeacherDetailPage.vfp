@@ -1,7 +1,17 @@
 <apex:page standardController="Contact">
-    <apex:pageBlock >
+               <apex:form>
+             <apex:pageBlock >
+                 <apex:pageBlockButtons location="top">
+                <apex:commandButton action="{!edit}" value="Edit"/>
+                <apex:commandButton action="{!delete}" value="Delete" onclick="return confirm('Are you sure you want to delete this record?');"/>
+                <apex:commandButton action="{!URLFOR($Action.Contact.Clone, Contact.Id)}" value="Clone"/>
+            </apex:pageBlockButtons>
+           
         <div style="background-color: #337ab7; color: #fff; padding: 10px;">
-            <apex:outputText value="{!IF(Contact.RecordType.Name == 'TGT', 'TGT Teacher', 'PGT Teacher')}"/>
+            
+            <apex:outputText value="{!Contact.RecordType.Name + ' Teacher'}"/>
+            
         </div>
     </apex:pageBlock>
+                               </apex:form>
 </apex:page>

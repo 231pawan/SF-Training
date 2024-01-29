@@ -8,6 +8,9 @@
             </apex:pageBlockButtons>
             <apex:pageBlockSection title="Class Information">
                 <apex:inputField value="{!Class__c.Name}" />
+                <apex:inputField value="{!Class__c.NumberOfStudents__c}" />
+                <apex:inputField value="{!Class__c.MaxSize__c}" />
+                <apex:inputField value="{!Class__c.MyCount__c}" />
             </apex:pageBlockSection>
         </apex:pageBlock>
     </apex:form>

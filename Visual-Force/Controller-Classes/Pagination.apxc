@@ -29,13 +29,15 @@ public with sharing class Pagination {
         // Build the dynamic query based on user input
       
 
+billingCity = String.isNotBlank(billingCity) ? billingCity : '';
+billingState = String.isNotBlank(billingState) ? billingState : '';
+billingCountry = String.isNotBlank(billingCountry) ? billingCountry : '';
 String queryString = 'SELECT Id, Name, Type, BillingCity, BillingState, BillingCountry FROM Account ' +
-                     'WHERE BillingCity = \'' + billingCity + '\' ' +
-                     'AND BillingState = \'' + billingState + '\' ' +
-                     'AND BillingCountry = \'' + billingCountry + '\' ' +
+                     'WHERE BillingCity = :billingCity ' +
+                     'AND BillingState = :billingState ' +
+                     'AND BillingCountry = :billingCountry ' +
                      'ORDER BY Name ' +
-                     'LIMIT ' + String.valueOf(noOfRecords);
-
+                     'LIMIT :noOfRecords';
 
         List<Account> accountList = Database.query(queryString);
 
