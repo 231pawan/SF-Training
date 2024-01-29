@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=   , initial-scale=1.0">
-    <link rel="stylesheet" href="home.css">
+    <!-- <link rel="stylesheet" href="home.css"> -->
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/4ec4d30d9c.js" crossorigin="anonymous"></script>
     <title>Metacube Parking System</title>
 </head>
 
 <body>
-    <img style="position: fixed;" id="parkingImage" src="Images/parking.jpeg" height="100%" width="100%" alt="Parking">
+    <!-- <img style="position: fixed;" id="parkingImage" src="Images/parking.jpeg" height="100%" width="100%" alt="Parking"> -->
     <div class="main">
 
         
@@ -36,8 +36,7 @@
                 <div id="nameItem" class="field">
                     <label for="fname">Full Name:</label><br>
                     <input type="text" id="fname" name="fname" placeholder="Name" required><br><br>
-                    <button type="button" id="btn next-btn" onclick="setName(this)"><i style="color: black;"
-                            class="fa-solid fa-arrow-right-long"></i></button><br>
+                    
                 </div>
                 <div class="hiddenItem" id="genderItem">
                     <p id="genderInput"></p>
@@ -45,14 +44,12 @@
                     <input type="radio" name="gender"> Male
                     <input type="radio" name="gender"> Female
                     <input type="radio" name="gender"> Others<br><br>
-                    <button type="button" id="btn next-btn" onclick="showNext(this)"><i style="color: black;"
-                            class="fa-solid fa-arrow-right-long"></i></button><br>
+                    
                 </div>
                 <div class="hiddenItem field" id="emailItem">
                     <label for="eid">Email Id:</label><br>
                     <input type="email" id="email" name="email" placeholder="Email Id"><br><br>
-                    <button type="button" id="btn next-btn" onclick="showPass(this)"><i style="color: black;"
-                            class="fa-solid fa-arrow-right-long"></i></button><br>
+                   
                 </div>
                 <div class="hiddenItem field" id="passwordItem">
                     <label for="Password">Password:</label><br>
@@ -60,28 +57,24 @@
                         oninput="borderChange(this)"><br><br>
                     <label for="cpassword">Confirm Password:</label><br>
                     <input type="password" id="cpassword" name="cpassword" placeholder="Confirm Password"><br><br>
-                    <button type="button" id="btn next-btn" onclick="showContact(this)"><i style="color: black;"
-                            class="fa-solid fa-arrow-right-long"></i></button><br>
+                    
                 </div>
                 <div class="hiddenItem field" id="contactItem">
                     <label for="Number">Contact Number:</label><br>
                     <input type="number" id="number" name="Number" placeholder="Contact Number"><br><br>
-                    <button type="button" id="btn next-btn" onclick="showVehicle(this)"><i style="color: black;"
-                            class="fa-solid fa-arrow-right-long"></i></button><br>
                 </div>
             </form>
         </div>
 
         <!-- Vehicle region -->
-        <div style="display: none;" class="formClass">
+        <div  class="formClass">
             <h2 id="addVehicle">ADD VEHICLE</h2>
             <form name="addvehicle" class="hidden" id="addVehicleForm">
                 <hr>
                 <div class="field">
                     <label for="Vname">Vehicle Name:</label><br>
                     <input type="text" name="vname" placeholder="Vehicle Name"><br><br>
-                    <button type="button" id="btn next-btn" onclick="showNext(this)"><i style="color: black;"
-                            class="fa-solid fa-arrow-right-long"></i></button><br>
+                   
                 </div>
                 <div id="vehicleModelItem " class="hiddenItem field">
                     <label for="Vmodel">Vehicle Type:</label><br>
@@ -90,33 +83,47 @@
                         <option value="motor-cycle">Motor-Cycle</option>
                         <option value="car">Car</option>
                     </select><br><br>
-                    <button type="button" id="btn next-btn" onclick="setVehicle(this)"><i style="color: black;"
-                            class="fa-solid fa-arrow-right-long"></i></button><br>
+                   
                 </div>
 
                 <div class="hiddenItem field">
                     <label for="vnumber">Vehicle Number:</label><br>
                     <input type="text" name="vnumber" placeholder="Vehicle Number"><br><br>
-                    <button type="button" id="btn next-btn" onclick="showNext(this)"><i style="color: black;"
-                            class="fa-solid fa-arrow-right-long"></i></button><br>
+                    
                 </div>
                 <div class="hiddenItem field">
                     <label for="empid">Employee Id:</label><br>
                     <input type="text" name="empid" placeholder="Employee Id"><br><br>
-                    <button type="button" id="btn next-btn" onclick="showNext(this)"><i style="color: black;"
-                            class="fa-solid fa-arrow-right-long"></i></button><br>
+                   
                 </div>
                 <div class="hiddenItem field">
                     <label for="empid">Identification:</label><br>
                     <textarea name="Identification" rows="2" cols="40" placeholder="Identification"></textarea><br><br>
-                    <button type="button" id="btn next-btn" onclick="showNextElement(this)"><i style="color: black;"
-                            class="fa-solid fa-arrow-right-long"></i></button><br>
                 </div>
             </form>
         </div>
+        <div  class="formClass" id="feedback">
+            <h2 id="pricing">Give Feedback</h2>
+            <div class="" id="pricingTable">
+                <form action="" class="details-form">
+                    <label for="name-input">Name:</label>
+                    <input type="text" required id="name-input" class="details-form-input">
+                    <label for="mail-input" >Email:</label>
+                    <input type="email" required id="mail-input" class="details-form-input">
+                    <label for="feedback-subject-input">Subject:</label>
+                    <input type="text" id="feedback-subject-input" class="details-form-input">
+                    <label for="message-box">Message:</label><br>
+                    <textarea name="" id="message-box" cols="30" rows="10" class="details-form-input"></textarea>
+                    <div class="form-button-section">
+                        <input type="submit" value="Send Mail" class="submit-buttons">
+                        <input type="reset" value="cancel" class="reset-buttons">
+                    </div>
 
+                </form>
+            </div>
+        </div>
         <!-- Table region -->
-        <div style="display: none;" class="formClass" id="pricing-div">
+        <div  class="formClass" id="pricing-div">
             <h2 id="pricing">PRICING</h2>
             <div class="" id="pricingTable">
                 <hr>
@@ -182,21 +189,7 @@
             </form>
         </div>
 
-        <div id="pass" class="formClass">
-            <h2>Confirmation:</h2>
-            <p id="pass-price"></p>
-            <div style="display: flex; justify-content: center; padding-bottom: 1%;">
-                <button style="display: none; width: 10%; margin-right: 10px; height: 4%;" id="inr-btn" onclick="currencyChange(this)">Convert to INR</button>
-                <button style="width: 10%; margin-right: 10px; height: 4%;" id="usd-btn" onclick="currencyChange(this)">Convert to USD</button>
-                <button style="width: 10%; margin-left: 10px; height: 4%;" id="yen-btn" onclick="currencyChange(this)">Convert to Yen</button>
-            </div>
-            <button style="width: 15%;" onclick="complete()">Get Pass</button>
-        </div>
-
-        <div id="final" class="formClass">
-            <h2>Pass Approved</h2>
-            <a href="metaparking.html"><button style="width: 15%;">Done</button></a>
-        </div>
+        
 
         <script src="index.js"></script>
     </div>
