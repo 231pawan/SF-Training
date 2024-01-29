@@ -2,31 +2,32 @@ public with sharing class GenerateStudentPDFController {
     public Student__c student { get; set; }
 
     public GenerateStudentPDFController() {
-        String studentId = ApexPages.currentPage().getParameters().get('id');
+         String studentId = ApexPages.currentPage().getParameters().get('id');
         if (studentId != null) {
             student = [SELECT Id, Name, Class__c FROM Student__c WHERE Id = :studentId];
         }
     }
 
     public PageReference generatePDF() {
-        String pdfContent = Page.GeneratePDFPage.getContent().toString();
+    String pdfContent = 'Name: ' + student.Name + '\nClass: ' + student.Class__c;
 
-        List<Attachment> existingAttachments = [SELECT Id FROM Attachment WHERE ParentId = :student.Id];
+    List<Attachment> existingAttachments = [SELECT Id FROM Attachment WHERE ParentId = :student.Id];
 
-        if (!existingAttachments.isEmpty()) {
-            delete existingAttachments;
-        }
-
-        Attachment newAttachment = new Attachment();
-        newAttachment.ParentId = student.Id;
-        newAttachment.Name = 'Student_Details.pdf';
-        newAttachment.Body = Blob.valueOf(pdfContent);
-        newAttachment.ContentType = 'application/pdf';
-
-        insert newAttachment;
-
-        PageReference GeneratePDFPage = new PageReference('/' + student.Id);
-        GeneratePDFPage.setRedirect(true);
-        return GeneratePDFPage;
+    if (!existingAttachments.isEmpty()) {
+        delete existingAttachments;
     }
+	PageReference PDF = Page.GeneratePDFPage;
+    Attachment newAttachment = new Attachment();
+    newAttachment.ParentId = student.Id;
+    newAttachment.Name = 'Student_Details.pdf';
+    Blob b = Blob.toPdf(pdfContent);
+    newAttachment.Body = b;
+    newAttachment.ContentType = 'application/pdf';
+    insert newAttachment;
+
+    PageReference generatePDFPage = new PageReference('/' + student.Id);
+    generatePDFPage.setRedirect(true);
+    return generatePDFPage;
+}
+
 }
