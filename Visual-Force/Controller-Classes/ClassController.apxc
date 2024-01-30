@@ -5,11 +5,15 @@ public class ClassController {
     public Id deleteClassId { get; set; }
     public Class__c editClassObj { get; set; }
     public Boolean isEditMode { get; set; }
+    public Class__c tempClass{get;
+                              set{
+                                  new Class__c();
+                              }}
 
     public ClassController() {
         // Initialize variables
         classMap = new Map<Id,Class__c>([SELECT Id, Name, DetailedDescription__c, MaxSize__c, MyCount__c FROM Class__c]);
-        editClassObj = new Class__c();
+        editClassObj = tempClass;
         isEditMode = false;
         classList = new List<Class__c>(classMap.values());
     }
@@ -24,7 +28,7 @@ public class ClassController {
     public void saveClass() {
         update editClassObj;
         isEditMode = false;
-        editClassObj = new Class__c();
+        editClassObj = tempClass;
     }
 
     // Method to delete a class
