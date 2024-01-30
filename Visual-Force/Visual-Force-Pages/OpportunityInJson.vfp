@@ -1,15 +1,3 @@
-<apex:page standardController="Opportunity" recordSetVar="opportunities" contentType="application/json">
-    {
-        "opportunities": [
-            <apex:repeat value="{!opportunities}" var="opp">
-                {
-                    "Id": "{!opp.Id}",
-                    "Name": "{!opp.Name}",
-                    "Amount": {!opp.Amount},
-                    "Stage": "{!opp.StageName}",
-                    "CloseDate": "{!opp.CloseDate}"
-                }
-            </apex:repeat>
-        ]
-    }
+<apex:page controller="OpportunityJsonController" contentType="application/json">
+    {!opportunitiesJson}
 </apex:page>
