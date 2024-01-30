@@ -7,6 +7,6 @@ public class OpportunityJsonController {
 
    public void fetchOpportunities() {
         List<Opportunity> opportunities = [SELECT Id, Name, Amount, StageName, CloseDate FROM Opportunity];
-        opportunitiesJson = JSON.serialize(opportunities);
+        opportunitiesJson = JSON.serializePretty(opportunities);
     }
 }
