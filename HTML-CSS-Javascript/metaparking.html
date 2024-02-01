@@ -12,7 +12,7 @@
 <body>
     <!-- Navigation Bar -->
     <div class="navigation-section">
-        <img src="logo.jpg" alt="" id = "metacube-logo">
+        <img src="logo.jpg" alt="" id="metacube-logo">
         <nav class="nav-items-list">
             <a class="nav-item" href="#employee-information">Add Employee</a> &nbsp;
             <a class="nav-item" href="#vehicle-information">Add Vehicle</a> &nbsp;
@@ -23,137 +23,130 @@
 
     <!-- Landing Page image -->
     <div class="homepage-welcome-section">
-            <p id="greeting-message">Welcome to metacube parking system.</p>
-            
-    <div class="main-form-region">
-        <button class="collapsable-form-btn" id="employee-information">Add Employee</button>
-        <div class="content">
-            <div class="form-section">
-                <form action="" method="POST" class="details-form">
-                    <label for="emp-name">Name: </label>
-                    <input type="text" id="emp-name" name="fullName" required class="details-form-input">
-                    <label for="">Gender: </label>
-                    <div id="form-gender-field" class="details-form-input">
-                        <input type="radio" name="employeeGender" value="Male" required> Male
-                        <input type="radio" name="employeeGender" value="Female" required> Female
-                    </div>
+        <p id="greeting-message">Welcome to metacube parking system.</p>
 
-                    <label for="employee-mail">Email: </label>
-                    <input type="email" name="employeeEmail" id="employee-mail" required class="details-form-input">
-                    <label for="emp-password">Password:</label>
-                    <input type="password" name="employeePassword" id="emp-password" required
-                        class="details-form-input">
-                    <label for="re-enter-password">Confirm Password: </label>
-                    <input type="password" name="confirmPassword" id="re-enter-password" required
-                        class="details-form-input">
-                    <label for="contact-number">Phone Number: </label>
-                    <input type="text" name="employeePassword" id="contact-number" required class="details-form-input">
-                    <div class="form-button-section">
-                        <input type="submit" value="save" class="submit-buttons">
-                        <input type="reset" value="cancel" class="reset-buttons">
-                    </div>
-                </form>
+        <div class="main-form-region">
+            <button class="collapsable-form-btn" id="employee-information">Add Employee</button>
+            <div class="content">
+                <div class="form-section">
+                    <form action="" method="POST" class="details-form">
+                        <label for="emp-name">Name: </label>
+                        <input type="text" id="emp-name" name="fullName" required class="details-form-input">
+                        <label for="">Gender: </label>
+                        <div id="form-gender-field" class="details-form-input">
+                            <input type="radio" name="employeeGender" value="Male" required> Male
+                            <input type="radio" name="employeeGender" value="Female" required> Female
+                        </div>
+
+                        <label for="employee-mail">Email: </label>
+                        <input type="email" name="employeeEmail" id="employee-mail" required class="details-form-input">
+                        <label for="emp-password">Password:</label>
+                        <input type="password" name="employeePassword" id="emp-password" required class="details-form-input">
+                        <label for="re-enter-password">Confirm Password: </label>
+                        <input type="password" name="confirmPassword" id="re-enter-password" required class="details-form-input">
+                        <label for="contact-number">Phone Number: </label>
+                        <input type="text" name="employeePassword" id="contact-number" required class="details-form-input">
+                        <div class="form-button-section">
+                            <input type="submit" value="save" class="submit-buttons">
+                            <input type="reset" value="cancel" class="reset-buttons">
+                        </div>
+                    </form>
+                </div>
+
             </div>
 
-        </div>
-
-        <!-- Add vehicle section -->
-        <button class="collapsable-form-btn" id="vehicle-information">Add Vehicle</button>
-        <div class="content">
-            <div class="form-section">
-                <form action="" class="details-form">
-                    <label for="vehicle-company ">Vehicle Company: </label>
-                    <input type="text" name=" vehicleCompanyName" id="vehicle-company" required
-                        class="details-form-input">
-                    <label for="vehicle-model">Vehicle Model: </label>
-                    <input type="text" name="vehicleModelName" id="vehicle-model" required class="details-form-input">
-                    <label for="type-of-vehicle">Select Type of Vehicle: </label>
-                    <select id="type-of-vehicl" class="details-form-input" required>
+            <!-- Add vehicle section -->
+            <button class="collapsable-form-btn" id="vehicle-information">Add Vehicle</button>
+            <div class="content">
+                <div class="form-section">
+                    <form action="" class="details-form">
+                        <label for="vehicle-company ">Vehicle Company: </label>
+                        <input type="text" name=" vehicleCompanyName" id="vehicle-company" required class="details-form-input">
+                        <label for="vehicle-model">Vehicle Model: </label>
+                        <input type="text" name="vehicleModelName" id="vehicle-model" required class="details-form-input">
+                        <label for="type-of-vehicle">Select Type of Vehicle: </label>
+                        <select id="type-of-vehicl" class="details-form-input" required>
                         <option value="Two Wheeler"> Two Wheeler</option>
                         <option value="Four Wheeler">Four Wheeler</option>
                     </select>
-                    <label for="vehicle-number">Vehicle Number: </label>
-                    <input type="text" id="vehicle-number" name="vehicleNumber" required class="details-form-input">
-                    <label for="employee-id">Employee Id: </label>
-                    <input type="text" id="employee-id" name="employeeId" required class="details-form-input">
-                    <label for="vehicle-identification">Identification: </label><br>
-                    <textarea name="identificationOfVehicle" id="vehicle-identification" cols="30" rows="5" required
-                        class="details-form-input"></textarea>
-                    <div class="form-button-section">
-                        <input type="submit" value="submit" class="submit-buttons">
-                        <input type="reset" value="cancel" class="reset-buttons">
-                    </div>
+                        <label for="vehicle-number">Vehicle Number: </label>
+                        <input type="text" id="vehicle-number" name="vehicleNumber" required class="details-form-input">
+                        <label for="employee-id">Employee Id: </label>
+                        <input type="text" id="employee-id" name="employeeId" required class="details-form-input">
+                        <label for="vehicle-identification">Identification: </label><br>
+                        <textarea name="identificationOfVehicle" id="vehicle-identification" cols="30" rows="5" required class="details-form-input"></textarea>
+                        <div class="form-button-section">
+                            <input type="submit" value="submit" class="submit-buttons">
+                            <input type="reset" value="cancel" class="reset-buttons">
+                        </div>
 
-                </form>
-            </div>
-        </div>
-
-        <!-- Feedback Section -->
-        <button class="collapsable-form-btn" id="give-feedback">Give Feedback</button>
-        <div class="content">
-            <div class="form-section">
-                <form action="" class="details-form">
-                    <label for="name-input">Name:</label>
-                    <input type="text" required id="name-input" class="details-form-input">
-                    <label for="mail-input" >Email:</label>
-                    <input type="email" required id="mail-input" class="details-form-input">
-                    <label for="feedback-subject-input">Subject:</label>
-                    <input type="text" id="feedback-subject-input" class="details-form-input">
-                    <label for="message-box">Message:</label><br>
-                    <textarea name="" id="message-box" cols="30" rows="10" class="details-form-input"></textarea>
-                    <div class="form-button-section">
-                        <input type="submit" value="Send Mail" class="submit-buttons">
-                        <input type="reset" value="cancel" class="reset-buttons">
-                    </div>
-
-                </form>
-            </div>
-        </div>
-
-        <!-- Pricing Section -->
-        <button class="collapsable-form-btn" id="pricing-section">Pricing</button>
-        <div class="content">
-            <div class="pricing-cards-section">
-                <div class="pricing-card">
-                    <h3>Cycle</h3>
-                    <div class="card-price-value">
-                        $100
-                        /month
-                    </div>
-                    <p>$5 Daily</p>
-                    <p>$100 Monthly</p>
-                    <p>$500 Yearly</p>
-                    <button class="purchase-btn">Purchase Now</button>
-                </div>
-                <div class="pricing-card">
-                    <h3>Motor Cycle</h3>
-                    <div class="card-price-value">
-                        $200
-                        /month
-                    </div>
-                    <p>$10 Daily</p>
-                    <p>$200 Monthly</p>
-                    <p>$1000 Yearly</p>
-                    <button class="purchase-btn">Purchase Now</button>
-                </div>
-                <div class="pricing-card">
-                    <h3>Four Wheeler</h3>
-                    <div class="card-price-value">
-                        $500
-                        /month
-                    </div>
-                    <p>$20 Daily</p>
-                    <p>$500 Monthly</p>
-                    <p>$3500 Yearly</p>
-                    <button class="purchase-btn">Purchase Now</button>
+                    </form>
                 </div>
             </div>
 
+            <!-- Feedback Section -->
+            <button class="collapsable-form-btn" id="give-feedback">Give Feedback</button>
+            <div class="content">
+                <div class="form-section">
+                    <form action="" class="details-form">
+                        <label for="name-input">Name:</label>
+                        <input type="text" required id="name-input" class="details-form-input">
+                        <label for="mail-input">Email:</label>
+                        <input type="email" required id="mail-input" class="details-form-input">
+                        <label for="feedback-subject-input">Subject:</label>
+                        <input type="text" id="feedback-subject-input" class="details-form-input">
+                        <label for="message-box">Message:</label><br>
+                        <textarea name="" id="message-box" cols="30" rows="10" class="details-form-input"></textarea>
+                        <div class="form-button-section">
+                            <input type="submit" value="Send Mail" class="submit-buttons">
+                            <input type="reset" value="cancel" class="reset-buttons">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <!-- Pricing Section -->
+            <button class="collapsable-form-btn" id="pricing-section">Pricing</button>
+            <div class="content">
+                <div class="pricing-cards-section">
+                    <div class="pricing-card">
+                        <h3>Cycle</h3>
+                        <div class="card-price-value">
+                            $100 /month
+                        </div>
+                        <p>$5 Daily</p>
+                        <p>$100 Monthly</p>
+                        <p>$500 Yearly</p>
+                        <button class="purchase-btn">Purchase Now</button>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Motor Cycle</h3>
+                        <div class="card-price-value">
+                            $200 /month
+                        </div>
+                        <p>$10 Daily</p>
+                        <p>$200 Monthly</p>
+                        <p>$1000 Yearly</p>
+                        <button class="purchase-btn">Purchase Now</button>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Four Wheeler</h3>
+                        <div class="card-price-value">
+                            $500 /month
+                        </div>
+                        <p>$20 Daily</p>
+                        <p>$500 Monthly</p>
+                        <p>$3500 Yearly</p>
+                        <button class="purchase-btn">Purchase Now</button>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
 
 
-    
+
     </div>
 </body>
 
