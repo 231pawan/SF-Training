@@ -30,7 +30,7 @@ function showNextElement(element) {
     var c = element.parentNode;
     var pc = c.parentNode;
     var ppc = pc.parentNode;
-    ppc.style.display = "none"; // Hide current element's parent
+    // ppc.style.display = "none"; // Hide current element's parent
     var ns = next(ppc);
     ns.style.display = "block"; // Display next element
 }
@@ -144,3 +144,28 @@ function complete() {
     document.getElementById("pass").style.display = "none";
     document.getElementById("final").style.display = "block";
 }
+const toggleEmployeeForm = document.getElementById("addEmployee");
+const toggleVehicleForm = document.getElementById("addVehicle");
+const toggleprice = document.getElementById("pricing");
+
+// Add click event listener to the h2 tag
+toggleEmployeeForm.addEventListener('click', function() {
+    document.getElementById("addEmployeeForm").style.display = "block";
+    document.getElementById("addVehicleForm").style.display = "none";
+    document.getElementById("pricingTable").style.display = "none";
+
+});
+
+toggleVehicleForm.addEventListener('click', function() {
+    document.getElementById("addEmployeeForm").style.display = "none";
+    document.getElementById("addVehicleForm").style.display = "block";
+    document.getElementById("pricingTable").style.display = "none";
+
+});
+
+toggleprice.addEventListener('click', function() {
+    document.getElementById("addEmployeeForm").style.display = "none";
+    document.getElementById("addVehicleForm").style.display = "none";
+    document.getElementById("pricingTable").style.display = "block";
+
+});
