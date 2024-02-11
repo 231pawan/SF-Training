@@ -84,11 +84,19 @@ function showContact(element) {
 function showVehicle(element) {
     let contact = document.getElementById("number").value;
 
-    if (/^\d+$/.test(contact) && contact.length >= 8)
+    if (/^\d+$/.test(contact) && contact.length >= 8) {
         showNextElement(element);
-    else
+        document.getElementById("addEmployeeForm").style.display = "none";
+        document.getElementById("addVehicleForm").style.display = "block";
+    } else
         alert("Invalid Number");
 }
+
+function showPricing(element) {
+    document.getElementById("addVehicleForm").style.display = "none";
+    document.getElementById("pricingTable").style.display = "block";
+}
+
 
 // Function to set vehicle type and show the next element
 function setVehicle(element) {
@@ -106,6 +114,8 @@ function setVehicle(element) {
             break;
     }
     showNext(element);
+    document.getElementById("pricingTable").style.display = "none";
+
 }
 
 // Variable to store selected price
