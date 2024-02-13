@@ -1,0 +1,17 @@
+<apex:page controller="OpportunityContactSelectorController" sidebar="false" showHeader="false">
+    <apex:form id="contactSelectorForm">
+        <apex:pageMessages />
+        <apex:pageBlock title="Select Bill To Contact">
+            <apex:pageBlockSection columns="1">
+                <apex:selectRadio value="{!selectedContactId}">
+                    <apex:selectOptions value="{!contactOptions}" />
+                </apex:selectRadio>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Save" action="{!saveContact}" rerender="contactSelectorForm"/>
+                <apex:commandButton value="Clear" action="{!clearContact}" rerender="contactSelectorForm"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

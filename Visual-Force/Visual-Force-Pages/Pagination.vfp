@@ -1,0 +1,41 @@
+<apex:page controller="Pagination">
+    <apex:form>
+        <apex:pageBlock id="blockMain">
+            <apex:pageBlockSection>
+                <div style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">Account Search</div>
+                <apex:outputPanel style="display: inline-block;">
+                    <apex:commandButton value="Search" action="{!searchAccounts}" reRender="blockMain" style="width: 80px;"/>
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection >
+                <apex:inputText value="{!noOfRecords}" label="Number of Accounts to show"/>
+                <apex:inputText value="{!billingCity}" label="Billing City"/>
+                <apex:inputText value="{!billingState}" label="Billing State"/>
+                <apex:inputText value="{!billingCountry}" label="Billing Country"/>
+            </apex:pageBlockSection>
+
+            <div style="width: 100%; border-bottom: 1px solid #ccc; margin-bottom: 20px;"></div>
+
+            <apex:pageBlockTable value="{!Accounts}" var="acc">
+                <apex:column value="{!acc.Name}"/>
+                <apex:column value="{!acc.Type}"/>
+                <apex:column value="{!acc.BillingCity}"/>
+                <apex:column value="{!acc.BillingState}"/>
+                <apex:column value="{!acc.BillingCountry}"/>
+            </apex:pageBlockTable>
+
+            <apex:panelGrid columns="2">
+                <apex:commandButton status="st" reRender="blockMain" value="First" action="{!first}" disabled="{!!hasPrevious}" title="First Page"/>
+                <apex:commandButton status="st" reRender="blockMain" value="Previous" action="{!previous}" disabled="{!!hasPrevious}" title="Previous Page"/>
+                <apex:commandButton status="st" reRender="blockMain" value="Next" action="{!next}" disabled="{!!hasNext}" title="Next Page"/>
+                <apex:commandButton status="st" reRender="blockMain" value="Last" action="{!last}" disabled="{!!hasNext}" title="Last Page"/>
+                <apex:outputText>{!(pageNumber * size)+1-size}-{!IF((pageNumber * size)>noOfRecords, noOfRecords,(pageNumber * size))} of {!noOfRecords}</apex:outputText>
+                <apex:commandButton status="st" reRender="blockMain" value="Refresh" action="{!refresh}" title="Refresh Page"/>
+                <apex:outputPanel style="color:#blue;font-weight:bold">
+                    <apex:actionStatus id="st" startText="Fetching..." stopText=""/>
+                </apex:outputPanel>
+            </apex:panelGrid>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

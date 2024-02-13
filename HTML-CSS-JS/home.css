@@ -1,0 +1,496 @@
+<<<<<<< HEAD
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #28282B;
+    background-image: url(Images/parking.jpeg);
+}
+
+#navbar {
+    background-color: rgb(219, 211, 211);
+    box-shadow: 0 0 3px black, 0 0 5px black;
+    border: solid;
+    border-radius: 15px;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 50px;
+=======
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    scroll-behavior: smooth;
+    padding-top: 45px;
+}
+
+
+/* For navigation bar */
+
+.navigation-section {
+    padding: 0.4em;
+    background-color: #10d0f1ef;
+    width: 100%;
+    /* height: 64px; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    z-index: 1;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+}
+
+.nav-item {
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: aliceblue;
+    margin: 4px;
+}
+
+.navigation-section a:hover {
+    text-decoration: underline;
+    color: yellow;
+}
+
+.homepage-welcome-section {
+    background-color: #3943f7;
+    background-image: url(logo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 100px;
+}
+
+.nav-items-list {
+    margin: 0px 6px;
+    ;
+}
+
+#metacube-logo {
+    width: 5%;
+>>>>>>> 6917bd9803529e748671fb478913b2e4142058a4
+}
+
+a {
+    color: white;
+    text-shadow: 0 0 3px black, 0 0 5px black;
+    font-size: 25px;
+    text-decoration: double;
+}
+
+<<<<<<< HEAD
+.formClass {
+    color: white;
+    text-shadow: 0 0 3px black, 0 0 5px black;
+    border: 2px solid;
+    border-radius: 15px;
+    box-shadow: 0 0 3px black, 0 0 100px black;
+    text-align: center;
+    background-color: gray;
+    font-size: 21px;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 20px;
+    /* Add margin-top */
+    margin-bottom: 20px;
+    /* Add margin-bottom */
+}
+
+a:hover {
+    color: black;
+    text-shadow: 0 0 3px white, 0 0 5px white;
+}
+
+#parkingImage {
+    opacity: 0;
+    z-index: -1;
+    border: none;
+}
+
+h2 {
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.formClass {
+    color: white;
+    text-shadow: 0 0 3px black, 0 0 5px black;
+    border: 2px solid;
+    border-radius: 15px;
+    box-shadow: 0 0 3px black, 0 0 100px black;
+    text-align: center;
+    background-color: gray;
+    font-size: 21px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+h2:hover {
+    color: black;
+    text-shadow: 0 0 3px white, 0 0 5px white;
+}
+
+.hidden {
+    /* display: none; */
+    padding-bottom: 3%;
+}
+
+.field {
+    display: flex;
+    justify-content: center;
+}
+
+.hiddenItem {
+    display: none;
+}
+
+#pricingTable {
+    border: 0px;
+    border-color: black;
+}
+
+input {
+    font-size: 1px;
+    /* background-color: aqua; */
+    border-radius: 5px;
+    font-size: 20px;
+    height: 25px;
+    margin-left: 2%;
+    /* margin-right: 2%; */
+}
+
+button {
+    border: 1px solid;
+    border-radius: 4px;
+    width: 5%;
+    height: 30px;
+}
+
+input::placeholder {
+    font: 15px sans-serif;
+}
+
+textarea {
+    border: solid;
+    background-color: aqua;
+    border-radius: 10px;
+}
+
+textarea::placeholder {
+    font: 15px sans-serif;
+}
+
+label {
+    font-weight: bold;
+}
+
+button:hover {
+    cursor: pointer
+}
+
+#nav-div {
+    width: 70%;
+    text-align: end;
+    padding-right: 2%;
+}
+
+#btn {
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    padding-right: 3%;
+    padding-left: 3%;
+}
+
+table {
+    border: black;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+tr {
+    display: inline;
+}
+
+td {
+    padding-top: 3%;
+    border: 2px solid black;
+}
+
+.in-nav {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2%;
+}
+
+#pbtn {
+    font-size: small;
+    font-weight: bold;
+    padding: 5%;
+    border-radius: 7px;
+    margin-bottom: 5%;
+    cursor: pointer;
+    height: 45px;
+}
+
+img {
+    background-color: antiquewhite;
+    border: solid;
+    padding: 4%;
+    border-radius: 20%;
+}
+
+hr {
+    border: 1px solid black;
+}
+
+.fimg {
+    border: none;
+    display: flex;
+    width: 40%;
+}
+
+#feedbackdiv {
+    display: flex;
+}
+
+.table-item {
+    display: none;
+}
+
+#final {
+    display: none;
+    padding-bottom: 1%;
+}
+
+.in-table {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20%;
+    margin-top: 5%;
+}
+
+.table-last {
+    margin-bottom: 8%;
+}
+
+.table-btn {
+    width: 33%;
+    margin-top: -5px;
+}
+
+#pass {
+    display: none;
+    padding-bottom: 1%;
+=======
+/* For home page image */
+
+#landing-page-image {
+    height: 430px;
+    width: 90%;
+}
+
+#greeting-message-container {
+    display: flex;
+    /* background-image: linear-gradient(90deg,#afc2e6, #fcf7cc); */
+    background-image: linear-gradient(90deg, #4a85f494, #ffffff);
+    padding: 0.8em 2.4em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4vh;
+    position: sticky;
+}
+
+#greeting-message {
+    text-align: center;
+    font-size: 2.2rem;
+    letter-spacing: .09em;
+    text-transform: capitalize;
+    color: #10d0f1ef;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 4px;
+}
+
+
+/* For collapsable form buttons */
+
+.collapsable-form-btn {
+    width: 60%;
+    text-align: center;
+    background-color: #10d0f1ef;
+    padding: .6em 0px;
+    margin-top: auto;
+    color: aliceblue;
+    font-size: 2.2rem;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    margin-bottom: 1vh;
+    font-size: 1.4em;
+}
+
+.active,
+.collapsable-form-btn:hover {
+    background-color: #b3b3bbda;
+    cursor: pointer;
+}
+
+.main-form-region {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.pricing-cards-section {
+    display: flex;
+    margin-top: 10px;
+    max-width: 100vw;
+    min-width: 0vw;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 1.5em;
+    box-sizing: border-box;
+}
+
+.pricing-card {
+    border: 2px solid #3943f7;
+    border-radius: 6px;
+    max-width: 50vw;
+    width: 200px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px;
+}
+
+.card-price-value {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    font-size: 1.3rem;
+    margin: 5px 0px;
+    border: 2px solid #3943f7;
+    text-align: center;
+    align-items: center;
+    text-align: center;
+}
+
+.pricing-card p {
+    font-size: 1rem;
+    text-transform: capitalize;
+    margin: 7px 2px;
+}
+
+.content {
+    margin: 15px 0px;
+    padding: 0 18px;
+    background-color: white;
+    max-height: 100%;
+    width: 100%;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.main-form-region {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-section {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.details-form {
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+    border: 2px solid #3943f7;
+    border-radius: 5px;
+    padding: 2em 4em;
+}
+
+.details-form label {
+    font-size: 1.2rem;
+    margin-bottom: 2px;
+}
+
+.details-form-input {
+    padding: 0.5em;
+    background-color: #dcdde1b0;
+    margin: 10px 0px;
+    border-radius: 10px;
+    border: none;
+}
+
+.form-button-section {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100vw;
+    min-width: 0vw;
+    margin: 10px 0px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.submit-buttons {
+    padding: 10px;
+    margin: 4px 0px;
+    width: 150px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: none;
+    background-color: #3e6ae4e1;
+    color: rgb(0, 0, 0);
+}
+
+.reset-buttons {
+    padding: 10px;
+    margin: 4px 0px;
+    width: 150px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: none;
+    background-color: red;
+    color: aliceblue;
+}
+
+.purchase-btn {
+    width: 50%;
+    font-size: 0.8rem;
+    padding: 5px;
+    margin: 5px;
+    background-color: transparent;
+    border: 2px solid #3e6ae4e1;
+    color: #3e6ae4e1;
+    border-radius: 30px;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+.purchase-btn:hover {
+    background-color: #3e6ae4e1;
+    color: #fff;
+>>>>>>> 6917bd9803529e748671fb478913b2e4142058a4
+}

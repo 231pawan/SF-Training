@@ -1,0 +1,104 @@
+public with sharing class Pagination {
+    public String billingCity { get; set; }
+    public String billingState { get; set; }
+    public String billingCountry { get; set; }
+    public Integer noOfRecords { get; set; }
+    public Integer size { get; set; }
+    public ApexPages.StandardSetController standardSetCtrl { get; set; }
+
+    // Constructor with parameters for dynamic query
+    public Pagination(String billingCity, String billingState, String billingCountry ,Integer noOfRecords) {
+        this.billingCity = billingCity;
+        this.billingState = billingState;
+        this.billingCountry = billingCountry;
+        if(noOfRecords == null){
+            this.noOfRecords = 0;
+        }else
+        this.noOfRecords = noOfRecords;
+        initializeController();
+    }
+
+    // Default constructor for other use cases
+    public Pagination() {
+        noOfRecords = 0;
+        initializeController();
+    }
+
+    private void initializeController() {
+        size = 10;
+        // Build the dynamic query based on user input
+      
+
+billingCity = String.isNotBlank(billingCity) ? billingCity : '';
+billingState = String.isNotBlank(billingState) ? billingState : '';
+billingCountry = String.isNotBlank(billingCountry) ? billingCountry : '';
+String queryString = 'SELECT Id, Name, Type, BillingCity, BillingState, BillingCountry FROM Account ' +
+                     'WHERE BillingCity = :billingCity ' +
+                     'AND BillingState = :billingState ' +
+                     'AND BillingCountry = :billingCountry ' +
+                     'ORDER BY Name ' +
+                     'LIMIT :noOfRecords';
+
+        List<Account> accountList = Database.query(queryString);
+
+        // Create the StandardSetController using the list of accounts
+        standardSetCtrl = new ApexPages.StandardSetController(accountList);
+        standardSetCtrl.setPageSize(size);
+        noOfRecords = standardSetCtrl.getResultSize();
+    }
+
+    public List<Account> getAccounts() {
+        return (List<Account>)standardSetCtrl.getRecords();
+    }
+
+    public PageReference searchAccounts() {
+        initializeController();
+        // Return the same page reference to refresh the page
+        return null;
+    }
+
+    public PageReference refresh() {
+        standardSetCtrl = null;
+        initializeController();
+        standardSetCtrl.setPageNumber(1);
+        // Return the same page reference to refresh the page
+        return null;
+    }
+
+    public Boolean hasNext {
+        get {
+            return standardSetCtrl.getHasNext();
+        }
+        set;
+    }
+
+    public Boolean hasPrevious {
+        get {
+            return standardSetCtrl.getHasPrevious();
+        }
+        set;
+    }
+
+    public Integer pageNumber {
+        get {
+            return standardSetCtrl.getPageNumber();
+        }
+        set;
+    }
+
+    public void first() {
+        standardSetCtrl.first();
+    }
+
+    public void last() {
+        standardSetCtrl.last();
+    }
+
+    public void previous() {
+        standardSetCtrl.previous();
+    }
+
+    public void next() {
+        standardSetCtrl.next();
+    }
+}

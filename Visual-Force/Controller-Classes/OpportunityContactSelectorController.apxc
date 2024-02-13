@@ -1,0 +1,46 @@
+public with sharing class OpportunityContactSelectorController {
+    public String opportunityId { get; set; }
+    public String selectedContactId { get; set; }
+
+    public OpportunityContactSelectorController() {
+        opportunityId = ApexPages.currentPage().getParameters().get('opportunityId');
+    }
+
+    public List<SelectOption> getContactOptions() {
+        // Fetch contacts related to the Manager on the Opportunity
+           Id managerId = [SELECT Manager__c FROM Opportunity WHERE Id = :opportunityId].Manager__c;
+
+		    List<Contact> contacts = [SELECT Id, Name FROM Contact WHERE AccountId = :managerId];
+        
+        // Create select options for the radio buttons
+        List<SelectOption> options = new List<SelectOption>();
+        for (Contact contact : contacts) {
+            options.add(new SelectOption(contact.Id, contact.Name));
+        }
+        return options;
+    }
+
+    public PageReference saveContact() {
+        // Update the Opportunity with the selected contact as BillToContact and Manager
+        Opportunity oppToUpdate = [SELECT Id, BillToContact__c, Manager__c FROM Opportunity WHERE Id = :opportunityId LIMIT 1];
+        oppToUpdate.BillToContact__c = selectedContactId;
+        update oppToUpdate;
+
+        // Redirect back to the Opportunity
+        return new PageReference('/' + opportunityId);
+    }
+
+    public PageReference clearContact() {
+        // Clear the BillToContact field and Manager field on the Opportunity
+        Opportunity oppToUpdate = [SELECT Id, BillToContact__c, Manager__c FROM Opportunity WHERE Id = :opportunityId LIMIT 1];
+        oppToUpdate.BillToContact__c = null;
+        update oppToUpdate;
+        // Redirect back to the Opportunity
+        return new PageReference('/' + opportunityId);
+    }
+
+    public PageReference cancel() {
+        // Redirect back to the Opportunity without making any changes
+        return new PageReference('/' + opportunityId);
+    }
+}
