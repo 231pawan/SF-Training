@@ -1,0 +1,228 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #28282B;
+    background-image: url(Images/parking.jpeg);
+}
+
+#navbar {
+    background-color: rgb(219, 211, 211);
+    box-shadow: 0 0 3px black, 0 0 5px black;
+    border: solid;
+    border-radius: 15px;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 50px;
+}
+
+a {
+    color: white;
+    text-shadow: 0 0 3px black, 0 0 5px black;
+    font-size: 25px;
+    text-decoration: double;
+}
+
+.formClass {
+    color: white;
+    text-shadow: 0 0 3px black, 0 0 5px black;
+    border: 2px solid;
+    border-radius: 15px;
+    box-shadow: 0 0 3px black, 0 0 100px black;
+    text-align: center;
+    background-color: gray;
+    font-size: 21px;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 20px;
+    /* Add margin-top */
+    margin-bottom: 20px;
+    /* Add margin-bottom */
+}
+
+a:hover {
+    color: black;
+    text-shadow: 0 0 3px white, 0 0 5px white;
+}
+
+#parkingImage {
+    opacity: 0;
+    z-index: -1;
+    border: none;
+}
+
+h2 {
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.formClass {
+    color: white;
+    text-shadow: 0 0 3px black, 0 0 5px black;
+    border: 2px solid;
+    border-radius: 15px;
+    box-shadow: 0 0 3px black, 0 0 100px black;
+    text-align: center;
+    background-color: gray;
+    font-size: 21px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+h2:hover {
+    color: black;
+    text-shadow: 0 0 3px white, 0 0 5px white;
+}
+
+.hidden {
+    /* display: none; */
+    padding-bottom: 3%;
+}
+
+.field {
+    display: flex;
+    justify-content: center;
+}
+
+.hiddenItem {
+    display: none;
+}
+
+#pricingTable {
+    border: 0px;
+    border-color: black;
+}
+
+input {
+    font-size: 1px;
+    /* background-color: aqua; */
+    border-radius: 5px;
+    font-size: 20px;
+    height: 25px;
+    margin-left: 2%;
+    /* margin-right: 2%; */
+}
+
+button {
+    border: 1px solid;
+    border-radius: 4px;
+    width: 5%;
+    height: 30px;
+}
+
+input::placeholder {
+    font: 15px sans-serif;
+}
+
+textarea {
+    border: solid;
+    background-color: aqua;
+    border-radius: 10px;
+}
+
+textarea::placeholder {
+    font: 15px sans-serif;
+}
+
+label {
+    font-weight: bold;
+}
+
+button:hover {
+    cursor: pointer
+}
+
+#nav-div {
+    width: 70%;
+    text-align: end;
+    padding-right: 2%;
+}
+
+#btn {
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    padding-right: 3%;
+    padding-left: 3%;
+}
+
+table {
+    border: black;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+tr {
+    display: inline;
+}
+
+td {
+    padding-top: 3%;
+    border: 2px solid black;
+}
+
+.in-nav {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2%;
+}
+
+#pbtn {
+    font-size: small;
+    font-weight: bold;
+    padding: 5%;
+    border-radius: 7px;
+    margin-bottom: 5%;
+    cursor: pointer;
+    height: 45px;
+}
+
+img {
+    background-color: antiquewhite;
+    border: solid;
+    padding: 4%;
+    border-radius: 20%;
+}
+
+hr {
+    border: 1px solid black;
+}
+
+.fimg {
+    border: none;
+    display: flex;
+    width: 40%;
+}
+
+#feedbackdiv {
+    display: flex;
+}
+
+.table-item {
+    display: none;
+}
+
+#final {
+    display: none;
+    padding-bottom: 1%;
+}
+
+.in-table {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20%;
+    margin-top: 5%;
+}
+
+.table-last {
+    margin-bottom: 8%;
+}
+
+.table-btn {
+    width: 33%;
+    margin-top: -5px;
+}
+
+#pass {
+    display: none;
+    padding-bottom: 1%;
+}
